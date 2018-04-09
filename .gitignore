@@ -113,7 +113,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# Gulp
+### Gulp ###
 gulpfile.js
 
 
