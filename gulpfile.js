@@ -7,6 +7,7 @@ const minifier = require('gulp-minifier')
 const gulpIf = require('gulp-if')
 const imagemin = require('gulp-imagemin')
 const cache = require('gulp-cache')
+const plumber = require('gulp-plumber')
 const del = require('del')
 const runSequence = require('run-sequence')
 
@@ -21,6 +22,7 @@ gulp.task('browserSync', () => {
 // Task to compile stylus files in css
 gulp.task('stylus', () => {
 	return gulp.src('app/styles/stylus/**/*.styl')
+		.pipe(plumber())
 		.pipe(stylus())
 		.pipe(gulp.dest('app/styles/css'))
 		.pipe(browserSync.reload({
