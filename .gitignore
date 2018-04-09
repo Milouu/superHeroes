@@ -113,5 +113,8 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# Gulp
+gulpfile.js
+
 
 # End of https://www.gitignore.io/api/node,macos,stylus,windows
