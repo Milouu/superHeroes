@@ -1,18 +1,18 @@
 <?php
 
-require_once 'HomepageController.php'
+require_once 'HomepageController.php';
 
-class Rooter 
+class Router 
 {
   
   private $homepageCtrl;
 
   public function __construct() 
   {
-    $this->$homepageCtrl = new homepageCtrl();
+    $this->homepageCtrl = new HomepageController();
   }
   
-  public function rootRequest()
+  public function routeRequest()
   {
     if(isset($_GET['action']))
     {

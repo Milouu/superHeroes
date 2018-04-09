@@ -1,6 +1,6 @@
 <?php 
 
-require 'controller/Rooter.php';
+require 'controller/Router.php';
 
-$rooter = new Rooter();
-$rooter->rootRequest();
+$router = new Router();
+$router->routeRequest();

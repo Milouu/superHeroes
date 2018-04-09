@@ -12,7 +12,7 @@
     <link rel="mask-icon" href="assets/images/hetic_icones/safari-pinned-tab.svg" color="#20e905">
     <meta name="theme-color" content="#ffffff">
 
-    <title>Partiel T2</title>
+    <title><?= $title ?></title>
 
     <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto" rel="stylesheet">
 
@@ -23,5 +23,10 @@
   </head>
   <body>
     <header>
-      <h1>Amazing expenses gestion</h1>
+      <h1>Amazing Super Heroes App</h1>
     </header>
+    <div class="contenu">
+      <?= $contenu ?>
+    </div>
+  </body>
+</html>
