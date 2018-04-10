@@ -23,6 +23,11 @@ class Router
       {
         $this->signupCtrl->signup();
       }
+
+      else if($_GET['action'] == 'trySignup')
+      {
+        $this->signupCtrl->trySignup();
+      }
     }
     else
     {
