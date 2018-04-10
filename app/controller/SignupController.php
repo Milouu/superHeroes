@@ -64,7 +64,7 @@ class SignupController
       {
         $data = [
           "user_name" => $name,
-          "user_password" => $password,
+          "user_password" => password_hash($password, PASSWORD_DEFAULT),
           "user_mail" => $mail
         ];
 

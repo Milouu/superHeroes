@@ -1,4 +1,5 @@
 <?php 
+session_start();
 
 require 'controller/Router.php';
 require 'config.php';
