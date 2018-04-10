@@ -20,7 +20,7 @@ abstract class Model
   {
     if($this->db == null)
     {
-      $this->db = new PDO('mysql:host=localhost;dbname=monblog;charset=utf8', root, '');
+      $this->db = new PDO('mysql:dbname='.$_ENV['DB_NAME'].';host='.$_ENV['DB_HOST'].'charset=utf8;port='.$_ENV['DB_PORT'], $_ENV['DB_USER'], $_ENV['DB_PASS']);
     }
     return $this->db;
   }
