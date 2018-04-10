@@ -4,13 +4,12 @@ const fs = require('fs')
 
 // Prepare requests
 const apiUrl = 'http://superheroapi.com/api/'
-const apiKeys = ['10215446684301563', '1392776330826904']
 
 let results = []
 
 const scrapeData = async () => {
   for (let i=1; i<731; i++) {
-    const request = `${apiUrl}${apiKeys[i%2]}/${i}`
+    const request = `${apiUrl}1392776330826904/${i}`
     let response
 
     try {
