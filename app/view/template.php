@@ -18,18 +18,25 @@
 
     <!--build:css styles/styles.min.css-->
     <link rel="stylesheet" href="styles/css/reset.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">   
     <link rel="stylesheet" href="styles/css/main.css" />
     <!--endbuild-->
   </head>
   <body>
-    <header>
-      <h1>Amazing Super Heroes App</h1>
-      <div class="menuBtns">
-        <a href="index.php?action=signup">Sign up</a>
-      </div>
-    </header>
-    <div class="contenu">
-      <?= $contenu ?>
-    </div>
+      <nav class="navbar navbar-inverse justify-content-center">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Hero Battlefield Tournament</a>
+          </div>
+          <ul class="nav navbar-inverse navbar-right">
+            <li><a href="#"><span class="mr-4"></span>Rules</a></li>
+            <li><a href="#"><span class="mr-4"></span>Dashboard</a></li>
+            <li><a href="#"><img src="../assets/images/user.svg"></img> Login</a></li>
+          </ul>
+        </div>
+      </nav>
+        <div class="contenu">
+          <?= $contenu ?>
+        </div>
   </body>
 </html>

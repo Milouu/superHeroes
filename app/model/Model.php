@@ -5,8 +5,13 @@ abstract class Model
   private $db; 
 
   protected function executeRequest($sql, $params = null) {
-    if($params == null) {
+    if(substr($sql, 0, 6) == 'SELECT')
+    {
       $result = $this->getDb()->query($sql);
+      return $result->fetchAll();
+    }
+    else if($params == null) {
+      $result = $this->getDb()->exec($sql);
     }
     else
     {

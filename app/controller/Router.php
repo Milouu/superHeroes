@@ -2,6 +2,7 @@
 
 require_once 'HomepageController.php';
 require_once 'SignupController.php';
+require_once 'SigninController.php';
 require_once 'RecruitController.php';
 
 class Router 
@@ -15,6 +16,7 @@ class Router
   {
     $this->homepageCtrl = new HomepageController();
     $this->signupCtrl = new SignupController();
+    $this->signinCtrl = new SigninController();
     $this->recruitCtrl = new RecruitController();
   }
   
@@ -24,13 +26,14 @@ class Router
     {
       if($_GET['action'] == 'signup')
       {
+        $this->signupCtrl->trySignup();
         $this->signupCtrl->signup();
       }
 
-      else if($_GET['action'] == 'trySignup')
+      else if($_GET['action'] == 'signin')
       {
-        $this->signupCtrl->trySignup();
-        $this->signupCtrl->signup();
+        $this->signinCtrl->trySignin();
+        $this->signinCtrl->signin();
       }
 
       else if($_GET['action'] == 'recruit') {

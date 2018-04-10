@@ -1,9 +1,7 @@
 <?php 
-session_start();
 
 require 'controller/Router.php';
-require 'config.php';
-// require 'config/dotEnvConfig.php';
+require 'config/config.php';
 
 $router = new Router();
 $router->routeRequest();

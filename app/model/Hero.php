@@ -13,17 +13,15 @@ class Hero extends Model
     if (file_exists($heroesCachePath))
     {
       // From cache
-      echo 'from cache </b>';
       $results = file_get_contents($heroesCachePath);
       $results = json_decode($results);
     }
     else
     {
       // From API
-      echo 'from API </br>';
       $results = array();
   
-      for($i = 1; $i < 3; $i++)
+      for($i = 1; $i < 100; $i++)
       {
         // $result = file_get_contents('http://superheroapi.com/api/'. $_ENV['API_KEY'] .'/'. $i);
         $result = file_get_contents('http://superheroapi.com/api/'. API_KEY .'/'. $i);
