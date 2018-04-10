@@ -8,7 +8,7 @@ const apiUrl = 'http://superheroapi.com/api/'
 let results = []
 
 const scrapeData = async () => {
-  for (let i=5; i<20; i++) {
+  for (let i=1; i<731; i++) {
     const request = `${apiUrl}1392776330826904/${i}`
     let response
 
@@ -31,7 +31,7 @@ const scrapeData = async () => {
       console.log('average : ' + average)
 
       // Only save if all ratings are set and average is good
-      if (isNaN(average) || average < 30) {
+      if (isNaN(average) || average < 35) {
         console.log('not worth keeping')
       } else {
         const selectedValues = (({ id, name, powerstats }) => ({ id, name, powerstats }))(response)
