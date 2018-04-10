@@ -114,7 +114,7 @@ $RECYCLE.BIN/
 *.lnk
 
 ### Gulp ###
-gulpfile.js
+#gulpfile.js
 
 .env
 
