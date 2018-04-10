@@ -13,7 +13,7 @@ class Hero extends Model
     if (file_exists($heroesCachePath))
     {
       // From cache
-      echo 'from cache </b>';
+      // echo 'from cache </b>';
       $results = file_get_contents($heroesCachePath);
       $results = json_decode($results);
     }
