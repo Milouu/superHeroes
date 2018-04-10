@@ -116,5 +116,7 @@ $RECYCLE.BIN/
 ### Gulp ###
 gulpfile.js
 
+.env
+
 
 # End of https://www.gitignore.io/api/node,macos,stylus,windows

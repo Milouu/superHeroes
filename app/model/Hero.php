@@ -25,7 +25,8 @@ class Hero extends Model
   
       for($i = 1; $i < 3; $i++)
       {
-        $result = file_get_contents('http://superheroapi.com/api/10215446684301563/'. $i);
+        // $result = file_get_contents('http://superheroapi.com/api/10215446684301563/'. $i);
+        $result = file_get_contents('http://superheroapi.com/api/'. $_ENV['API_KEY'] .'/'. $i);
     
         // Json decode
         $result = json_decode($result);
