@@ -1,21 +1,30 @@
 <?php
 
 require_once 'model/Model.php';
+require_once 'model/User.php';
 require_once 'view/View.php';
 
 class SignupController 
 {
+  private $errorMessages;
+  private $successMessage;
+  private $user;
+
+  public function __construct()
+  {
+    $this->errorMessages = [];
+    $this->successMessage = '';
+    $this->user = new User();
+  }
+
   public function signup()
   {
     $view = new View('Signup');
-    $view->generate();
+    $view->generate(array('errorMessages' => $this->errorMessages, 'successMessage' => $this->successMessage));
   }
 
   public function trySignup()
-  {
-    $errorMessages = [];
-    $successMessage = '';
-    
+  { 
     // Form sent
     if(!empty($_POST))
     {
@@ -26,54 +35,47 @@ class SignupController
       // Handling errors
       if(empty($name))
       {
-        $errorMessages['name'] = 'Missing name';
+        $this->errorMessages['name'] = 'Missing name';
       }
       else if(strlen($name) < 4)
       {
-        $errorMessages['name'] = 'Name is too short';
+        $this->errorMessages['name'] = 'Name is too short';
       }
     
       if(empty($password))
       {
-        $errorMessages['password'] = 'Missing password';
+        $this->errorMessages['password'] = 'Missing password';
       }
       else if(strlen($password) < 4)
       {
-        $errorMessages['password'] = 'Password is too short';
+        $this->errorMessages['password'] = 'Password is too short';
       }
 
       if(empty($mail))
       {
-        $errorMessages['mail'] = 'Missing email';
+        $this->errorMessages['mail'] = 'Missing email';
       }
-      else if(!preg_match('/[a-zA-Z0-9_-.+]+@[a-zA-Z0-9-]+.[a-zA-Z]+/', $mail))
+      else if(!preg_match('#^[\w.-]+@[\w.-]+\.[a-z]{2,6}$#i', $mail))
       {
-        $errorMessages['mail'] = 'Please enter a valid email';
+        $this->errorMessages['mail'] = 'Please enter a valid email';
       }
     
-      if(empty($errorMessages))
+      if(empty($this->errorMessages))
       {
-         // Prepares INSERT INTO values
-         $prepare = $pdo->prepare('
-         INSERT INTO 
-           expenses (user_name, user_password, user_mail)
-         VALUES
-           (:user_name, :user_password, :user_mail)
-       ');
+        $data = [
+          "user_name" => $name,
+          "user_password" => $password,
+          "user_mail" => $mail
+        ];
+
+        $this->user->addUser($data);
     
-        // Binds values to form data
-        $prepare->bindValue('user_name', $name);
-        $prepare->bindValue('user_password', $password);
-        $prepare->bindValue('user_mail', $mail);
-    
-        // Execute the insert
-        $prepare->execute();
-    
-        $successMessage = 'Expense successfully added';
+        $this->successMessage = 'Inscription successful';
     
         // Empty POST
         $_POST['name'] = '';
-        $_POST['amount'] = '';
+        $_POST['password'] = '';
+        $_POST['mail'] = '';
       }
     }
     
@@ -81,7 +83,8 @@ class SignupController
     else
     {
       $_POST['name'] = '';
-      $_POST['amount'] = '';
+      $_POST['password'] = '';
+      $_POST['mail'] = '';
     }
   }
 }

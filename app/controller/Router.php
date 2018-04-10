@@ -9,7 +9,7 @@ class Router
   private $homepageCtrl;
   private $signupCtrl;
 
-  public function __construct() 
+  public function __construct()
   {
     $this->homepageCtrl = new HomepageController();
     $this->signupCtrl = new SignupController();
@@ -27,6 +27,7 @@ class Router
       else if($_GET['action'] == 'trySignup')
       {
         $this->signupCtrl->trySignup();
+        $this->signupCtrl->signup();
       }
     }
     else
