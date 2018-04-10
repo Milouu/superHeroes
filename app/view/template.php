@@ -24,6 +24,9 @@
   <body>
     <header>
       <h1>Amazing Super Heroes App</h1>
+      <div class="menuBtns">
+        <a href="index.php?action=signup">Sign up</a>
+      </div>
     </header>
     <div class="contenu">
       <?= $contenu ?>

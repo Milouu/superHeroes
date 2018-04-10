@@ -1,0 +1,33 @@
+input
+  display block
+  height auto
+  width 100%
+  padding 2px 5px
+  margin-top 10px
+  margin-bottom 10px
+  border-bottom 1px solid grey
+  background whitish
+  font-family core_font
+
+  &.error--active
+    border-bottom 1px solid red
+
+  &[type="submit"]
+    width 150px
+    padding 10px
+    cursor pointer
+    background flashy_blue
+    color #fefefe
+    margin 20px 0
+    font-weight bold
+    border-radius 50px
+    transition 0.3s ease-in
+
+    &:hover 
+      background-color whitish
+      color flashy_blue
+      border 1px solid flashy_blue
+    
+    &:active
+      background dark_blue
+      color whitish
