@@ -1,7 +1,7 @@
 <?php $this->title = "Sign up" ?>
 
 <div class="formContainer">
-  <form action="index.php?action=trySignup" method="POST">
+  <form action="index.php?action=signup" method="POST">
 
     <h2 class="formTitle">Sign up</h2>
 

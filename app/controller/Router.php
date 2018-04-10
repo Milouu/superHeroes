@@ -24,11 +24,6 @@ class Router
     {
       if($_GET['action'] == 'signup')
       {
-        $this->signupCtrl->signup();
-      }
-
-      else if($_GET['action'] == 'trySignup')
-      {
         $this->signupCtrl->trySignup();
         $this->signupCtrl->signup();
       }
