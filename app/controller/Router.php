@@ -14,6 +14,7 @@ class Router
   private $signupCtrl;
   private $recruitCtrl;
   private $leaguesCtrl;
+  private $dashboardCtrl;
 
   public function __construct()
   {
@@ -22,6 +23,7 @@ class Router
     $this->signinCtrl = new SigninController();
     $this->recruitCtrl = new RecruitController();
     $this->leaguesCtrl = new LeaguesController();
+    $this->dashboardCtrl = new DashboardController();
   }
   
   public function routeRequest()
@@ -72,6 +74,11 @@ class Router
           }
           else
             throw new Exception('Connection error. User ID is not defined.');
+        }
+
+        else if($_GET['action'] == 'dashboard')
+        {
+          $this->dashboardCtrl->dashboard();
         }
   
         else if($_GET['action'] == 'recruit') 
