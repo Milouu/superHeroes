@@ -89,6 +89,7 @@ class Router
         {
           if(isset($_GET['league_id']))
           {
+            $this->dashboardCtrl->setSessionLeagueId($_GET['league_id']);
             $this->dashboardCtrl->dashboard($_GET['league_id']);
           }
           else
@@ -98,6 +99,11 @@ class Router
         else if($_GET['action'] == 'recruit') 
         {
           $this->recruitCtrl->recruit();
+        }
+        
+        else if($_GET['action'] == 'deconnection') 
+        {
+          $this->signinCtrl->logout();
         }
 
         else

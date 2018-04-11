@@ -50,7 +50,7 @@
   {
   ?>
 
-  <a href="index.php?action=dashboard&league_id="<?= array_values($leagues)[$i]->league_id ?>> 
+  <a href="index.php?action=dashboard&league_id=<?= array_values($leagues)[$i]->league_id ?>"> 
     <?= array_values($league_names)[$i][0]->league_name ?>
   </a>
 
