@@ -9,13 +9,13 @@
     </div>
     <div class="homepageButtonContainer">
         <div class="row justify-content-center">
-            <button class="registerButton">I want to register !</button>
+            <a href="./?action=signup" class="registerButton">I want to register !</a>
         </div>
         <div class="row justify-content-center mt-3">
-            <button class="readTheRulesButton">I want to read the rules first</button>
+            <a href="#" class="readTheRulesButton">I want to read the rules first</button>
         </div>
         <div class="row">
-            <a href="#" class="mt-2 mb-3 col-lg-4 offset-lg-4 col-md-4 offset-md-4 col-sm-4 offset-sm-4 col-xs-4 offset-xs-4 signInLink">I already have an account !</a>
+            <a href="./?action=signin" class="mt-2 mb-3 col-lg-4 offset-lg-4 col-md-4 offset-md-4 col-sm-4 offset-sm-4 col-xs-4 offset-xs-4 signInLink">I already have an account !</a>
         </div>
     </div>
 </div>   
