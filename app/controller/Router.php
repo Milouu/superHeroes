@@ -5,6 +5,7 @@ require_once 'SignupController.php';
 require_once 'SigninController.php';
 require_once 'RecruitController.php';
 require_once 'LeaguesController.php';
+require_once 'DashboardController.php';
 
 class Router 
 {
