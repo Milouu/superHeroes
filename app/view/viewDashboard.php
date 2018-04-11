@@ -4,7 +4,7 @@
 
 <h1><?= $league_name[0]->league_name ?></h1>
 
-<a href="index.php?action=recruit&league_id=<?= $_GET['league_id'&page] ?>">Recrutement</a>
+<a href="index.php?action=recruit&league_id=<?= $_GET['league_id'] ?>">Recrutement</a>
 
 <div>
   <?php for($i = 0; $i < count($league_users); $i++): ?>

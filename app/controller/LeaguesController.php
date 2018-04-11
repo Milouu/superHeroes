@@ -50,11 +50,20 @@ class LeaguesController
         ];
 
         $this->league->addLeague($leagueData);
+
+        $userData = [
+          'league_id' => $this->league->getCreatedLeagueId(),
+          'user_id' => $_SESSION['user_id']
+        ];
+  
+        $this->league->addLeagueUser($userData);
     
         $this->successMessage = 'League created';
     
         // Empty POST
         $_POST['name'] = '';
+
+        header('Location: index.php?action=dashboard&league_id=' . $userData->league_id);
       }
     }
     
@@ -89,6 +98,8 @@ class LeaguesController
   
       // Empty POST
       $_POST['code'] = '';
+
+      header('Location: index.php?action=dashboard&league_id=' . $joinLeagueData->league_id);
     }
     
     // Form not sent
