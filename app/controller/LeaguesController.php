@@ -20,8 +20,18 @@ class LeaguesController
   public function leagues($user_id)
   {
     $leagues = $this->league->getLeagues($user_id);
+    $league_names = array();
+
+    foreach($leagues as $league)
+    {
+      $league_name = $this->league->getLeagueName($league->league_id);
+      array_push($league_names, $league_name);
+    }
+    echo '<pre>';
+    var_dump($league_names);
+    echo '</pre>';
     $view = new View('Leagues');
-    $view->generate(array('leagues' => $leagues));   
+    $view->generate(array('leagues' => $leagues, 'league_names' => $league_names));   
   }
 
   public function tryAddLeague($user_id)
