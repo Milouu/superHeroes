@@ -32,5 +32,5 @@ $this->title = "Recruit Superheroes";
       <p>1000 credits</p>
     </div>
   </div>
-  <? endforeach; ?>
+  <?php endforeach; ?>
 </div>

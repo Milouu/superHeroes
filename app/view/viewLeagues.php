@@ -36,6 +36,6 @@
 
 <div>
   <?php foreach($leagues as $league): ?>
-  <p><?= $league->league_name ?></p>
+  <a href="index.php?action=dashboard&league_id="<?= $league->league_id ?>><?= $league->league_name ?></a>
   <?php endforeach; ?>
 </div>
