@@ -25,6 +25,15 @@
   </form>
 </div> 
 
+<form action="join" method="get" class="formContainer">
+  <h2>Join a league</h2>
+  <label>
+    Enter a league code
+    <input type="text" name="code" placeholder="My league 32" required>
+  </label>
+  <input type="submit" value="Join">
+</form>
+
 <div>
   <?php foreach($leagues as $league): ?>
   <p><?= $league->league_name ?></p>
