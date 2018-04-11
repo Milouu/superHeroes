@@ -3,6 +3,7 @@
 require_once 'model/Model.php';
 require_once 'model/League.php';
 require_once 'model/User.php';
+require_once 'model/Hand.php';
 require_once 'view/View.php';
 
 class DashboardController
