@@ -9,7 +9,7 @@ const noImage = 'http://www.superherodb.com/pictures/portraits/no-portrait.jpg'
 let results = []
 
 const scrapeData = async connection => {
-  for (let i=1; i<3; i++) {
+  for (let i=1; i<731; i++) {
     const request = `${apiUrl}1392776330826904/${i}`
     let response
 
