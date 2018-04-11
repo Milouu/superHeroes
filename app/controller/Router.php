@@ -56,10 +56,14 @@ class Router
                   $this->leaguesCtrl->tryAddLeague($user_id);
                   $this->leaguesCtrl->leagues($user_id);
                 }
-                else
+                else if($_GET['option'] == 'create')
                 {
                   $this->leaguesCtrl->leagues($user_id);
                 }
+              }
+              else 
+              {
+                $this->leaguesCtrl->leagues($user_id);
               }
             }
             else

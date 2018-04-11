@@ -4,10 +4,11 @@
 
 <a href="index.php?action=leagues&option=create">Create League</a>
 
-<div class="formContainer popin">
+<div class="formContainer popin <?= ($_GET['option'] == 'create') ? "popin--active" : false ?>">
   <form action="index.php?action=leagues&option=tryCreation" method="POST">
 
     <h2 class="formTitle">New league</h2>
+    <a href="index.php?action=leagues" style="color:black;">Close</a>
 
     <div class="inputContainer">
       <label for="name">League Name</label>
