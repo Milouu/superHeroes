@@ -25,6 +25,25 @@
   </form>
 </div> 
 
+<a href="index.php?action=leagues&option=join">Join League</a>
+
+<div class="formContainer popin <?= ($_GET['option'] == 'join') ? "popin--active" : false ?>">
+  <form action="index.php?action=leagues&option=tryJoin" method="POST">
+    <h2 class="formTitle">Join league</h2>
+    <a href="index.php?action=leagues" style="color:black;">Close</a>
+
+    <div class="inputContainer">
+      <label for="name">League code</label>
+      <input type="text" name="name" id="name" value="<?= isset($_POST['name']) ? $_POST['name'] : '' ?>" class=" <?= isset($errorMessages['code']) ? "error--active" : false ?>">
+      <div class="errorMessages <?= !empty($errorMessages['code']) ? 'errorMessages--active' : '' ?>"><?= $errorMessages['code'] ?></div>
+    </div>
+    <br>
+    <div class="successMessages <?= !empty($successMessage) ? "successMessages--active" : false ?>"><?= $successMessage ?></div>
+
+    <input type="submit" value="Create" class="formButton">
+  </form>
+</div>
+
 <div>
   <?php foreach($leagues as $league): ?>
   <a href="index.php?action=dashboard&league_id="<?= $league->league_id ?>><?= $league->league_name ?></a>

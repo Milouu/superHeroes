@@ -27,7 +27,7 @@ class LeaguesController
   public function tryAddLeague($user_id)
   {
     // Form sent
-    if(!empty($_POST))
+    if(!empty($_POST['name']))
     {
       $name = $_POST['name'];
     
@@ -47,7 +47,7 @@ class LeaguesController
           "league_name" => $name
         ];
 
-       $this->league->addLeague($leagueData);
+        $this->league->addLeague($leagueData);
 
         $userData = [
           "league_id" => $this->league->getCreatedLeagueId(),
@@ -68,6 +68,37 @@ class LeaguesController
     else
     {
       $_POST['name'] = '';
+    }
+  }
+
+  public function joinLeague($user_id)
+  {
+    // Form sent
+    if(!empty($_POST['code']))
+    {
+      $code = $_POST['code'];
+    
+      // Handling errors
+      if(empty($code))
+      {
+        $this->errorMessages['code'] = 'Missing code';
+      }
+      else
+      {
+
+        $this->league->addLeagueUser($userData);
+    
+        $this->successMessage = 'League created';
+    
+        // Empty POST
+        $_POST['code'] = '';
+      }
+    }
+    
+    // Form not sent
+    else
+    {
+      $_POST['code'] = '';
     }
   }
 }

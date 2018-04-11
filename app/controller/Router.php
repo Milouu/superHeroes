@@ -63,6 +63,15 @@ class Router
                 {
                   $this->leaguesCtrl->leagues($user_id);
                 }
+                else if($_GET['option'] == 'tryJoin')
+                {
+                  $this->leaguesCtrl->tryAddLeague($user_id);
+                  $this->leaguesCtrl->leagues($user_id);
+                }
+                else if($_GET['option'] == 'join')
+                {
+                  $this->leaguesCtrl->leagues($user_id);
+                }
               }
               else 
               {
