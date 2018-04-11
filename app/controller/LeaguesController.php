@@ -49,11 +49,6 @@ class LeaguesController
 
        $this->league->addLeague($leagueData);
 
-        echo '<pre>';
-        var_dump($this->league->getCreatedLeagueId());
-        echo '</pre>';
-
-
         $userData = [
           "league_id" => $this->league->getCreatedLeagueId(),
           "league_name" => $name,
