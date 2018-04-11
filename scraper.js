@@ -21,8 +21,22 @@ const scrapeData = async () => {
 
     // Only save if request was successful
     if (response && response.response === 'success') {
-      const selectedValues = (({ id, name, powerstats }) => ({ id, name, powerstats }))(response)
-      results.push(selectedValues)
+      // Get all ratings in array
+      let ratings = Object.values(response.powerstats)
+      console.log(ratings)
+      // Convert all ratings to int
+      ratings = ratings.map(rating => parseInt(rating))
+      // Calculate average
+      const average = ratings.reduce((total, rating) => total + rating) / ratings.length;
+      console.log('average : ' + average)
+
+      // Only save if all ratings are set and average is good
+      if (isNaN(average) || average < 35) {
+        console.log('not worth keeping')
+      } else {
+        const selectedValues = (({ id, name, powerstats }) => ({ id, name, powerstats }))(response)
+        results.push(selectedValues)
+      }
     }
 
     // Log progression
