@@ -2,6 +2,33 @@
 
 <p><?= isset($_SESSION['user']) ? 'Hello ' . $_SESSION['user'] : '' ?></p>
 
+<div class="container leagueContainer pb-4">
+  <div class="row">
+    <div class="col-lg-12 border-bottom border-dark pt-2 pb-2">Your League</div>
+  </div>
+  <div class="container justify-content-center">
+    <div class="row">
+      <input class="col-lg-4 offset-lg-4 mt-5" type="text" name="league name" placeholder="Name of your league">
+    </div>
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3 mt-5 mb-5">Invite your friends ! Send them the key for joining your league : K45P093</div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">Partner 1 : Mes Burnos </br> Partner 2 : Ma burnette</br> Partner 3 : Ma burnasse</div>
+    </div>
+    <div class="row mt-4">
+      <button class="leaguesButton col-lg-2 offset-lg-3"><a href="">Confirm your league</a></button>
+      <button class="leaguesButton col-lg-2 offset-lg-2"><a href="">Start your championship</a></button>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Dynamic page elements -->
+
+
+
 <a href="index.php?action=leagues&option=create">Create League</a>
 
 <div class="formContainer popin <?= ($_GET['option'] == 'create') ? "popin--active" : false ?>">
