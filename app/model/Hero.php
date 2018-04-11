@@ -6,36 +6,6 @@ class Hero extends Model
 {
   public function getHeroes()
   {
-
-    // Check if heroes list is cached already
-    $heroesCachePath = './cache/heroes.txt';
-
-    if (file_exists($heroesCachePath))
-    {
-      // From cache
-      $results = file_get_contents($heroesCachePath);
-      $results = json_decode($results);
-    }
-    else
-    {
-      // From API
-      $results = array();
-  
-      for($i = 1; $i < 100; $i++)
-      {
-        // $result = file_get_contents('http://superheroapi.com/api/'. $_ENV['API_KEY'] .'/'. $i);
-        $result = file_get_contents('http://superheroapi.com/api/'. API_KEY .'/'. $i);
-    
-        // Json decode
-        $result = json_decode($result);
-    
-        array_push($results, $result);
-      }
-
-      // Cache results for future visits
-      file_put_contents($heroesCachePath, json_encode($results));
-    }
-
-    return $results;
+    return $this->executeRequest('SELECT * FROM heroes');
   }
 }

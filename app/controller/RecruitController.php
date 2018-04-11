@@ -16,6 +16,9 @@ class RecruitController
   public function recruit() 
   {
     $heroes = $this->hero->getHeroes();
+    // echo '<pre>';
+    // var_dump($heroes);
+    // echo '</pre>';
     $view = new View('Recruit');
     $view->generate(array('heroes' => $heroes));
   }

@@ -1,21 +1,15 @@
-<?php $this->title = "Dashboard" ?>
+<?php
+  $this->title = "Dashboard";
+?>
 
 <h1><?= $league_name[0]->league_name ?></h1>
 
-<a href="index?action=recrutement">Recrutement</a>
+<a href="index.php?action=recruit&league_id=<?= $_GET['league_id'&page] ?>">Recrutement</a>
 
 <div>
-  <?php 
-  for($i = 0; $i < count($league_users); $i++)
-  {
-  ?>
-
+  <?php for($i = 0; $i < count($league_users); $i++): ?>
   <span><?= array_values($user_names)[$i][0]->user_name ?></span>
   <span><?= array_values($league_users)[$i]->user_id ?></span>
-
   <br>
-
-  <?php
-  }
-  ?>
+  <?php endfor; ?>
 </div>

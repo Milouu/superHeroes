@@ -38,15 +38,16 @@ $this->title = "Recruit Superheroes";
     </div>
     <?php foreach ($heroes as $hero): ?>
     <div class="heroLine">
-      <p class="name"><?=$hero->name ?></p>
+      <p class="name"><?=$hero->hero_name ?></p>
       <div class="data">
-        <p><?=$hero->powerstats->intelligence ?></p>
-        <p><?=$hero->powerstats->strength ?></p>
-        <p><?=$hero->powerstats->speed ?></p>
-        <p><?=$hero->powerstats->durability ?></p>
-        <p><?=$hero->powerstats->power ?></p>
-        <p><?=$hero->powerstats->combat ?></p>
-        <p>1000 credits</p>
+        <p><?=$hero->intelligence ?></p>
+        <p><?=$hero->strength ?></p>
+        <p><?=$hero->speed ?></p>
+        <p><?=$hero->durability ?></p>
+        <p><?=$hero->power ?></p>
+        <p><?=$hero->combat ?></p>
+        <p class="price"><?= $hero->average ?> RP</p>
+        <input type="checkbox" name="selection" value="<?= $hero->hero_id ?>">
       </div>
     </div>
     <?php endforeach; ?>
