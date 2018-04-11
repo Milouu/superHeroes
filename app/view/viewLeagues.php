@@ -33,8 +33,8 @@
     <a href="index.php?action=leagues" style="color:black;">Close</a>
 
     <div class="inputContainer">
-      <label for="name">League code</label>
-      <input type="text" name="name" id="name" value="<?= isset($_POST['name']) ? $_POST['name'] : '' ?>" class=" <?= isset($errorMessages['code']) ? "error--active" : false ?>">
+      <label for="code">League code</label>
+      <input type="text" name="code" id="code" value="<?= isset($_POST['code']) ? $_POST['code'] : '' ?>" class=" <?= isset($errorMessages['code']) ? "error--active" : false ?>">
       <div class="errorMessages <?= !empty($errorMessages['code']) ? 'errorMessages--active' : '' ?>"><?= $errorMessages['code'] ?></div>
     </div>
     <br>
@@ -45,7 +45,16 @@
 </div>
 
 <div>
-  <?php foreach($leagues as $league): ?>
-  <a href="index.php?action=dashboard&league_id="<?= $league->league_id ?>><?= $league->league_name ?></a>
-  <?php endforeach; ?>
+  <?php 
+  for($i = 0; $i < count($leagues); $i++)
+  {
+  ?>
+
+  <a href="index.php?action=dashboard&league_id="<?= array_values($leagues)[$i]->league_id ?>> 
+    <?= array_values($league_names)[$i][0]->league_name ?>
+  </a>
+
+  <?php
+  }
+  ?>
 </div>
