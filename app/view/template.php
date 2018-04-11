@@ -31,7 +31,7 @@
           <ul class="nav navbar-inverse navbar-right">
             <li><a href="#"><span class="mr-4"></span>Rules</a></li>
             <li><a href="#"><span class="mr-4"></span>Dashboard</a></li>
-            <li><a href="#"><img src="../assets/images/user.svg"></img> Login</a></li>
+            <li><a href="index.php?action=signin"><img src="assets/images/user.svg"></img> Login</a></li>
           </ul>
         </div>
       </nav>

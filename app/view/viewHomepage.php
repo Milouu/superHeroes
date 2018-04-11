@@ -1,6 +1,5 @@
 <?php $this->title = "Super Heroes" ?>
 
-<p><?= isset($_SESSION['user']) ? 'Hello ' . $_SESSION['user'] : '' ?></p>
 <div class="container">
     <div class="row homepageTitleContainer">
         <h1 class="col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-8 offset-sm-2 col-xs-8 offset-xs-2 homepageTitle">Hero Battlefield Tournament</h1>

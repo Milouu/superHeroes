@@ -23,7 +23,7 @@
 
     <div class="successMessages <?= !empty($successMessage) ? "successMessages--active" : false ?>"><?= $successMessage ?></div>
 
-    <input type="submit" value="Create" class="formButton">
+    <input type="submit" value="Connect" class="formButton">
 
   </form>
 </div> 

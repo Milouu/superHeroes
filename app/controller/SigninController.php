@@ -35,7 +35,7 @@ class SigninController
         $_SESSION['user'] = $_POST['name'];
         
         // Redirecting to index.php after successfull connection
-        header('Location: index.php');
+        header('Location: index.php?action=leagues');
       }
       else
       {
@@ -56,7 +56,7 @@ class SigninController
     {
       if($user_name == $user->user_name && password_verify($user_password, $user->user_password))
       {
-        $_SESSION['id'] = $user->id;
+        $_SESSION['user_id'] = $user->user_id;
         return 1;
       }
     }
