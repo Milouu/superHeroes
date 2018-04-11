@@ -100,6 +100,11 @@ class Router
         {
           $this->recruitCtrl->recruit();
         }
+
+        else if($_GET['action'] = 'tryRecruit')
+        {
+          $this->recruitCtrl->tryRecruit();
+        }
         
         else if($_GET['action'] == 'deconnection') 
         {

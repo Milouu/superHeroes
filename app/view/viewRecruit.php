@@ -26,7 +26,7 @@
   
   <h2>Recruit superheroes</h2>
 
-  <div class="recruitList">
+  <form class="recruitList" method="POST" action="index.php?action=tryRecruit&league_id=<?= $_GET['league_id'] ?>">
     <div class="labels">
       <p>Name</p>
       <div class="data">
@@ -50,9 +50,10 @@
         <p><?=$hero->power ?></p>
         <p><?=$hero->combat ?></p>
         <p class="price"><?= $hero->average ?> RP</p>
-        <input type="checkbox" name="selection" value="<?= $hero->hero_id ?>">
+        <input type="checkbox" name="selections[]" value="<?= $hero->hero_id ?>">
       </div>
     </div>
     <?php endforeach; ?>
-    </div>
+    <input type="submit" value="Select players">
+  </form>
 </div>
