@@ -8,8 +8,8 @@
 
 ## Database
 - Open PhpMyAdmin
-- Create a new database named 'hetic_superHeroes_test'
-- Go to SQL, copy/paste hetic_superHeroes.sql & execute
+- Create a new database named 'hetic_superheroes'
+- Go to SQL, copy/paste hetic_superheroes.sql & execute
 - [!] Be careful, you may need to modify the SQL port in includes/config.php. The current SQL port is 3306.
 
 ## Features

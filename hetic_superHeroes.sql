@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 10 avr. 2018 à 16:33
+-- Généré le :  mer. 11 avr. 2018 à 08:54
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -56,9 +56,16 @@ DROP TABLE IF EXISTS `leagues`;
 CREATE TABLE IF NOT EXISTS `leagues` (
   `league_id` int(11) NOT NULL AUTO_INCREMENT,
   `league_name` varchar(50) NOT NULL,
-  `league_link` varchar(255) NOT NULL,
   PRIMARY KEY (`league_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `leagues`
+--
+
+INSERT INTO `leagues` (`league_id`, `league_name`) VALUES
+(1, 'New league'),
+(2, 'Test again');
 
 -- --------------------------------------------------------
 
@@ -70,9 +77,18 @@ DROP TABLE IF EXISTS `league_users`;
 CREATE TABLE IF NOT EXISTS `league_users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `league_id` int(11) NOT NULL,
+  `league_name` varchar(50) NOT NULL,
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `league_users`
+--
+
+INSERT INTO `league_users` (`id`, `league_id`, `league_name`, `user_id`) VALUES
+(1, 1, 'New league', 7),
+(2, 2, 'Test again', 7);
 
 -- --------------------------------------------------------
 
@@ -105,13 +121,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   `user_password` varchar(100) NOT NULL,
   `user_mail` varchar(100) NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`user_id`, `user_name`, `user_password`, `user_mail`) VALUES
+(7, 'Yolo', '$2y$10$J6I46ryD7Po8vtICtQiim.Yb9TVhPZRurgJnq2NFyaKKw3C2tHuC2', 'yolo@yolo.fr'),
 (6, 'Yolo', '$2y$10$a72ctjXdNZWXJ.FL6N/xP.TjwDSpVAwznWRM5TdemzlSjQF3oF.Sy', 'yolo@y.fr');
 COMMIT;
 
