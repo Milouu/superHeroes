@@ -21,7 +21,7 @@ class League extends Model
 
   public function addLeagueUser($data)
   {
-    $this->executeRequest('INSERT INTO league_users (league_id, league_name, user_id) VALUES (:league_id, :league_name, :user_id)', $data);
+    $this->executeRequest('INSERT INTO league_users (league_id, user_id) VALUES (:league_id, :user_id)', $data);
   }
   
   public function getLeagueNames($leagues)

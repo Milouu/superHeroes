@@ -53,7 +53,6 @@ class LeaguesController
 
         $userData = [
           "league_id" => $this->league->getCreatedLeagueId(),
-          "league_name" => $name,
           "user_id" => $_SESSION['user_id']
         ];
 
@@ -87,8 +86,12 @@ class LeaguesController
       }
       else
       {
+        $joinLeagueData = array(
+          'league_id' => $_POST['code'],
+          'user_id' => $user_id
+        );
 
-        $this->league->addLeagueUser($userData);
+        $this->league->addLeagueUser($joinLeagueData);
     
         $this->successMessage = 'League created';
     
