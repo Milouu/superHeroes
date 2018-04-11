@@ -23,6 +23,11 @@ class League extends Model
   {
     $this->executeRequest('INSERT INTO league_users (league_id, league_name, user_id) VALUES (:league_id, :league_name, :user_id)', $data);
   }
+  
+  public function getLeagueName($league_id)
+  {
+    return $this->executeRequest('SELECT league_name FROM leagues WHERE league_id=' .$league_id);
+  }
 
   public function getCreatedLeagueId()
   {
