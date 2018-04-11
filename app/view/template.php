@@ -26,13 +26,13 @@
       <nav class="navbar">
         <div class="container">
           <div class="navbar-header">
-            <a class="navbar-brand" href="#">Hero Battlefield Tournament</a>
+            <a class="navbar-brand" href="<?= isset($_SESSION['user']) ? "index.php?action=league": "index.php" ?>">Hero Battlefield Tournament</a>
           </div>
           <div class="nav navbar-right">
             <a class="mr-4" href="#">Rules</a>
             <a class="mr-4" href="#">Dashboard</a>
             <a class="mr-4 login <?= isset($_SESSION['user']) ? "connection--active":False?>" href="index.php?action=signin"><img src="assets/images/user.svg"></img> Login</a>
-            <a class="mr-4 deconnection <?= isset($_SESSION['user']) ? "deconnection--active":False?>" href="index.php?action=signin"><img src="assets/images/user.svg"></img> Deconnection</a>
+            <a class="mr-4 deconnection <?= isset($_SESSION['user']) ? "deconnection--active": false ?>" href="index.php?action=deconnection"><img src="assets/images/user.svg"></img> Deconnection</a>
           </div>
         </div>
       </nav>
