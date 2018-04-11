@@ -1,9 +1,8 @@
 <?php $this->title = "Sign up" ?>
 
-<div class="formContainer">
-  <form action="index.php?action=signup" method="POST">
-
-    <h2 class="formTitle">Sign up</h2>
+<div class="container formContainer mt-5 col-lg-6 col-md-6">
+  <div class="formTitle">Sign up</div>
+  <form class="container" action="index.php?action=signup" method="POST">
 
     <div class="inputContainer">
       <label for="name">Name</label>

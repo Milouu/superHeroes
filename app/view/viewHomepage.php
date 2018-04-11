@@ -1,5 +1,6 @@
 <?php $this->title = "Super Heroes" ?>
 
+<p><?= isset($_SESSION['user']) ? 'Hello ' . $_SESSION['user'] : '' ?></p>
 <div class="container">
     <div class="row homepageTitleContainer">
         <h1 class="col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-8 offset-sm-2 col-xs-8 offset-xs-2 homepageTitle">Hero Battlefield Tournament</h1>
@@ -9,13 +10,13 @@
     </div>
     <div class="homepageButtonContainer">
         <div class="row justify-content-center">
-            <a href="./?action=signup" class="registerButton">I want to register !</a>
+            <button class="registerButton"><a href="index.php?action=signup">I want to register !</a></button>
         </div>
         <div class="row justify-content-center mt-3">
-            <a href="#" class="readTheRulesButton">I want to read the rules first</button>
+            <button class="readTheRulesButton"><a href="#">I want to read the rules first</a></button>
         </div>
         <div class="row">
-            <a href="./?action=signin" class="mt-2 mb-3 col-lg-4 offset-lg-4 col-md-4 offset-md-4 col-sm-4 offset-sm-4 col-xs-4 offset-xs-4 signInLink">I already have an account !</a>
+            <a href="index.php?action=signin" class="mt-2 mb-3 col-lg-4 offset-lg-4 col-md-4 offset-md-4 col-sm-4 offset-sm-4 col-xs-4 offset-xs-4 signInLink">I already have an account !</a>
         </div>
     </div>
 </div>   

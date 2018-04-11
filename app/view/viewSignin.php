@@ -1,10 +1,8 @@
 <?php $this->title = "Sign in" ?>
 
-<div class="formContainer">
-  <form action="index.php?action=signin" method="POST">
-
-    <h2 class="formTitle">Sign in</h2>
-
+<div class="container-fluid formContainer mt-5 col-lg-6 col-md-6">
+  <div class="formTitle"><p>Login</p></div>
+  <form class="container" action="index.php?action=signin" method="POST">
     <div class="inputContainer">
       <label for="name">Username</label>
       <input type="text" name="name" id="name" value="<?= isset($_POST['name']) ? $_POST['name'] : '' ?>" class=" <?= isset($errorMessages['name']) ? "error--active" : false ?>">

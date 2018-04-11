@@ -23,16 +23,17 @@
     <!--endbuild-->
   </head>
   <body>
-      <nav class="navbar navbar-inverse justify-content-center">
+      <nav class="navbar">
         <div class="container">
           <div class="navbar-header">
             <a class="navbar-brand" href="#">Hero Battlefield Tournament</a>
           </div>
-          <ul class="nav navbar-inverse navbar-right">
-            <li><a href="#"><span class="mr-4"></span>Rules</a></li>
-            <li><a href="#"><span class="mr-4"></span>Dashboard</a></li>
-            <li><a href="index.php?action=signin"><img src="assets/images/user.svg"></img> Login</a></li>
-          </ul>
+          <div class="nav navbar-right">
+            <a class="mr-4" href="#">Rules</a>
+            <a class="mr-4" href="#">Dashboard</a>
+            <a class="mr-4 login <?= isset($_SESSION['user']) ? "connection--active":False?>" href="index.php?action=signin"><img src="assets/images/user.svg"></img> Login</a>
+            <a class="mr-4 deconnection <?= isset($_SESSION['user']) ? "deconnection--active":False?>" href="index.php?action=signin"><img src="assets/images/user.svg"></img> Deconnection</a>
+          </div>
         </div>
       </nav>
         <div class="contenu">
