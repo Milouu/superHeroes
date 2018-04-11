@@ -15,8 +15,7 @@ class HomepageController
 
   public function homepage() 
   {
-    $heroes = $this->hero->getHeroes();
     $view = new View('Homepage');
-    $view->generate(array('heroes' => $heroes));
+    $view->generate();
   }
 }

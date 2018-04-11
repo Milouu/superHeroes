@@ -6,10 +6,10 @@ $this->title = "Recruit Superheroes";
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-12 tableTitle">Recruit superheroes</div>
+    <div class="col-lg-12 recruitHeader mt-5">Recruit superheroes</div>
   </div>
   <div class="row">
-    <button>Budget remaining 5000 RP</button>
+    <button class="col-lg-4 offset-lg-4 mt-3 mb-5 budgetRemaining">Budget remaining 5000 RP</button>
   </div>
   <div class="row">
     <input type="search" value="search">

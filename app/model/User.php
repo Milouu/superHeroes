@@ -14,6 +14,17 @@ class User extends Model
     return $this->executeRequest('SELECT * FROM users');
   }
 
+  public function getUserNames($user_ids)
+  {
+    $user_names = [];
+
+    foreach($user_ids as $user_id)
+    {
+      array_push($user_names, $this->executeRequest('SELECT user_name FROM users WHERE user_id=' . $user_id->user_id));
+    }
+    return $user_names;
+  }
+
   public function deconnection()
   {
     session_destroy();

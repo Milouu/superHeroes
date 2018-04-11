@@ -62,4 +62,9 @@ class SigninController
     }
     return 0;
   }
+
+  public function logout()
+  {
+    $this->user->deconnection();
+  }
 }
