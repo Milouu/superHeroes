@@ -14,9 +14,9 @@ class League extends Model
     $this->executeRequest('INSERT INTO leagues (league_name) VALUES (:league_name)', $data);
   }
 
-  public function deleteLeague()
+  public function deleteLeague($leagueid)
   {
-    $this->executeRequest('DELETE FROM leagues WHERE ')
+    $this->executeRequest('DELETE FROM leagues WHERE league_id=' . $league_id);
   }
 
   public function addLeagueUser($data)
