@@ -1,8 +1,4 @@
-<?php
-
-$this->title = "Recruit Superheroes";
-
-?>
+<?php $this->title = "Recruit Superheroes"; ?>
 
 <div class="container">
   <div class="row">
@@ -12,10 +8,17 @@ $this->title = "Recruit Superheroes";
     <button class="col-lg-4 offset-lg-4 mt-3 mb-5 budgetRemaining">Budget remaining 5000 RP</button>
   </div>
   <div class="row">
-    <input type="search" value="search">
-    <input type="search" value="search">
-    <input type="radio" value="value">
-    <input type="checkbox" value="1">
+    <form action="index.php?action=recruit&league_id=<?= $_GET['league_id'] ?>" method="POST">
+      <label for="sorting">Sort by:</label>
+      <select id="sorting" name="sorting">
+        <option value="average">Overall stats</option> 
+        <option value="strength">Strength</option>
+        <option value="durability">Durability</option>
+        <option value="power">Power</option>
+        <option value="combat">Combat</option>
+      </select>
+      <input type="submit" value="Sort">
+    </form>
   </div>
 </div>
 
