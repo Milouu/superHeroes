@@ -45,7 +45,16 @@
 </div>
 
 <div>
-  <?php foreach($leagues as $league): ?>
-  <a href="index.php?action=dashboard&league_id="<?= $league->league_id ?>><?= $league->league_name ?></a>
-  <?php endforeach; ?>
+  <?php 
+  for($i = 0; $i < count($leagues); $i++)
+  {
+  ?>
+
+  <a href="index.php?action=dashboard&league_id="<?= array_values($leagues)[$i]->league_id ?>> 
+    <?= array_values($league_names)[$i][0]->league_name ?>
+  </a>
+
+  <?php
+  }
+  ?>
 </div>
