@@ -4,7 +4,8 @@ abstract class Model
 {
   private $db; 
 
-  protected function executeRequest($sql, $params = null) {
+  protected function executeRequest($sql, $params = null) 
+  {
     if(substr($sql, 0, 6) == 'SELECT')
     {
       $result = $this->getDb()->query($sql);
@@ -19,6 +20,11 @@ abstract class Model
       $result->execute($params);
     }
     return $result;
+  }
+
+  protected function getLastId()
+  {
+    return $this->getDb()->lastInsertId();
   }
 
   private function getDb()

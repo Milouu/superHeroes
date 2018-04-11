@@ -6,12 +6,22 @@ class League extends Model
 {
   public function getLeagues($user_id)
   {
-    return $this->executeRequest('SELECT * FROM league_users WHERE id = ' . $user_id);
-  
+    return $this->executeRequest('SELECT * FROM league_users WHERE user_id = ' . $user_id);
   }
 
   public function addLeague($data)
   {
-    $this->executeRequest('INSERT INTO league_users (league_id, user_id) VALUES (:league_id, :user_id)', $data);
+    $this->executeRequest('INSERT INTO leagues (league_name) VALUES (:league_name)', $data);
+  }
+
+  public function addLeagueUser($data)
+  {
+    $this->executeRequest('INSERT INTO league_users (league_id, league_name, user_id) VALUES (:league_id, :league_name, :user_id)', $data);
+  }
+
+  public function getCreatedLeagueId()
+  {
+    // return $this->executeRequest('SELECT LAST_INSERT_ID() FROM leagues');
+    return $this->getLastId();
   }
 }

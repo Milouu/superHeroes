@@ -13,4 +13,10 @@ class User extends Model
   {
     return $this->executeRequest('SELECT * FROM users');
   }
+
+  public function deconnection()
+  {
+    session_destroy();
+    header('Location: index.php');
+  }
 }

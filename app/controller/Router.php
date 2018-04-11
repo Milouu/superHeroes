@@ -49,7 +49,18 @@ class Router
             $user_id = intval($_SESSION['user_id']);
             if($user_id != 0)
             {
-              $this->leaguesCtrl->leagues($user_id);
+              if(isset($_GET['option']))
+              {
+                if($_GET['option'] == 'tryCreation')
+                {
+                  $this->leaguesCtrl->tryAddLeague($user_id);
+                  $this->leaguesCtrl->leagues($user_id);
+                }
+                else
+                {
+                  $this->leaguesCtrl->leagues($user_id);
+                }
+              }
             }
             else
               throw new Exception('Invalid user ID');  
