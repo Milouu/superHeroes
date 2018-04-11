@@ -6,15 +6,34 @@
 
 <a href="index.php?action=recruit&league_id=<?= $_GET['league_id'] ?>">Recrutement</a>
 
-<div>
-  <?php for($i = 0; $i < count($league_users); $i++): ?>
-  <span><?= array_values($user_names)[$i][0]->user_name ?></span>
-  <span><?= array_values($league_users)[$i]->user_id ?></span>
-  <br>
-  <?php endfor; ?>
+<div class="container">
+
+  <h2>League members</h2>
+
+  <div class="recruitList">
+    <div class="labels">
+      <p>Name</p>
+      <div class="data">
+        <p>ID</p>
+      </div>
+    </div>
+    <?php for($i = 0; $i < count($league_users); $i++): ?>
+    <div class="heroLine">
+      <p class="name"><?= array_values($user_names)[$i][0]->user_name ?></p>
+      <div class="data">
+        <p><?= array_values($league_users)[$i]->user_id ?></p>
+      </div>
+    </div>
+    <?php endfor; ?>
+  </div>
 </div>
 
+<br>
+
 <div class="container">
+
+  <h2>Your heroes</h2>
+
   <div class="recruitList">
     <div class="labels">
       <p>Name</p>
@@ -40,5 +59,5 @@
       </div>
     </div>
     <?php endforeach; ?>
-    </div>
+  </div>
 </div>
