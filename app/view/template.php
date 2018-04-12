@@ -26,7 +26,7 @@
       <nav class="navbar">
         <div class="container">
           <div class="navbar-header">
-            <a class="navbar-brand" href="<?= isset($_SESSION['user']) ? "index.php?action=leagues": "index.php" ?>">Hero Battlefield Tournament</a>
+            <a class="navbar-brand" href="<?= isset($_SESSION['user']) ? "index.php?action=leagues": "index.php" ?>">HERO BATTLEFIELD TOURNAMENT</a>
           </div>
           <div class="nav navbar-right">
             <a class="mr-4" href="index.php?action=rules">Rules</a>
