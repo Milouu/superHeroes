@@ -111,6 +111,10 @@ class Router
                 $this->dashboardCtrl->trySetOrder($_SESSION['user_id'], $_GET['league_id']);
                 $this->dashboardCtrl->dashboard($_GET['league_id']);
               }
+              else if($_GET['option'] == 'nextDay')
+              {
+                $this->dashboardCtrl->setNextLeagueDay($_GET['league_id']);
+              }
               else 
                 throw new Exception('Option is invalid.');
             }

@@ -21,29 +21,6 @@ class Match extends Model
     );
   }
 
-  public function setMatchResult($match_id)
-  {
-    $matchDetails = $this->getMatchDetails($match_id);
-
-    // Get user hands
-    $hand1 = $this->hand->getOrderedHeroesFromHand(
-      $this->hero->getHand($matchDetails->user1_id, $matchDetails->league_id)
-    );
-    $hand2 = $this->hand->getOrderedHeroesFromHand(
-      $this->hero->getHand($matchDetails->user2_id, $matchDetails->league_id)
-    );
-
-    echo '<pre>';
-    var_dump($hand1);
-    echo '</pre>';
-
-    // Simulate all 5 rounds
-    // for($i = 0; $i < 5; $i++)
-    // {
-    //   echo $hand2->{''}
-    // }
-  }
-
   public function createLeagueMatches($league_id, $league_users)
   {
     $this->executeRequest('INSERT INTO matches (league_id, league_day, user1_id, user2_id) VALUES (:league_id, :league_day, :user1_id, :user2_id)', [
