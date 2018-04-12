@@ -4,9 +4,16 @@
 
 <h1><?= $league_name[0]->league_name ?></h1>
 
-<a href="index.php?action=recruit&league_id=<?= $_GET['league_id'] ?>">Recrutement</a>
-<a href="index.php?action=dashboard&option=tryLaunchLeague&league_id=<?= $_GET['league_id'] ?>">Launch League</a>
+<a href="index.php?action=recruit&league_id=<?= $_GET['league_id'] ?>" style="display:<?= $current_league_day[0]->current_league_day ? 'none' : 'inline-block' ?>">
+  Recrutement
+</a>
+
+<a href="index.php?action=dashboard&option=tryLaunchLeague&league_id=<?= $_GET['league_id'] ?>" style="display:<?= $current_league_day[0]->current_league_day ? 'none' : 'inline-block' ?>">
+  Launch League
+</a>
+
 <p style="color:red;"><?= isset($errorMessages['tryLaunchLeague']) ? $errorMessages['tryLaunchLeague'] : '' ?></p>
+<p style="color:green;"><?= isset($successMessages['leagueCreation']) ? $successMessages['leagueCreation'] : '' ?></p>
 
 <div class="container">
 

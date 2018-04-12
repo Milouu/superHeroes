@@ -11,6 +11,7 @@ require_once 'view/View.php';
 class DashboardController
 {
   private $errorMessages = [];
+  private $successMessages = [];
   private $league;
   private $user;
   private $hand;
@@ -30,6 +31,8 @@ class DashboardController
   { 
     $league_name = $this->league->getLeagueName($league_id);
     $league_users = $this->league->getLeagueUsers($league_id);
+    $current_league_day = $this->league->getCurrentLeagueDay($league_id);
+
     $user_names = $this->user->getUserNames($league_users);
 
     $user_hand = $this->hand->getHand($_SESSION['user_id'], $league_id);
@@ -38,8 +41,10 @@ class DashboardController
     $view = new View('Dashboard');
     $view->generate(array(
       'errorMessages' => $this->errorMessages,
+      'successMessages' => $this->successMessages,
       'league_name' => $league_name, 
-      'league_users' => $league_users, 
+      'league_users' => $league_users,
+      'current_league_day' => $current_league_day, 
       'user_names' => $user_names,
       'user_heroes' => $user_heroes
     ));
@@ -52,6 +57,10 @@ class DashboardController
     if(count($league_users) == 8)
     {
       $this->match->createLeagueMatches($league_id, $league_users);
+      $this->league->initCurrentLeagueDay($league_id);
+      $this->successMessages['leagueCreation'] = 'League successfully created';
+      
+      header('Location: index.php?action=dashboard&league_id=' .$league_id);
     }
     else 
     {
