@@ -2,9 +2,18 @@
   $this->title = "Dashboard";
 ?>
 
-<h1><?= $league_name[0]->league_name ?></h1>
+<h1><?= $league_name->league_name ?></h1>
 
-<a href="index.php?action=recruit&league_id=<?= $_GET['league_id'] ?>">Recrutement</a>
+<a href="index.php?action=recruit&league_id=<?= $_GET['league_id'] ?>" style="display:<?= $current_league_day->current_league_day ? 'none' : 'inline-block' ?>">
+  Recrutement
+</a>
+
+<a href="index.php?action=dashboard&option=tryLaunchLeague&league_id=<?= $_GET['league_id'] ?>" style="display:<?= $current_league_day->current_league_day ? 'none' : 'inline-block' ?>">
+  Launch League
+</a>
+
+<p style="color:red;"><?= isset($errorMessages['tryLaunchLeague']) ? $errorMessages['tryLaunchLeague'] : '' ?></p>
+<p style="color:green;"><?= isset($successMessages['leagueCreation']) ? $successMessages['leagueCreation'] : '' ?></p>
 
 <div class="container">
 
@@ -56,6 +65,40 @@
         <p><?=$user_hero->durability ?></p>
         <p><?=$user_hero->power ?></p>
         <p><?=$user_hero->combat ?></p>
+      </div>
+    </div>
+    <?php endforeach; ?>
+  </div>
+</div>
+
+<br>
+
+<div class="container">
+
+  <h2>Next Match</h2>
+
+  <div class="recruitList">
+    <div class="labels">
+      <p>Name</p>
+      <div class="data">
+        <p>Intelligence</p>
+        <p>Strength</p>
+        <p>Speed</p>
+        <p>Durability</p>
+        <p>Power</p>
+        <p>Combat</p>
+      </div>
+    </div>
+    <?php foreach($opponent_heroes as $opponent_hero): ?>
+    <div class="heroLine">
+      <p class="name"><?=$opponent_hero->hero_name ?></p>
+      <div class="data">
+        <p><?=$opponent_hero->intelligence ?></p>
+        <p><?=$opponent_hero->strength ?></p>
+        <p><?=$opponent_hero->speed ?></p>
+        <p><?=$opponent_hero->durability ?></p>
+        <p><?=$opponent_hero->power ?></p>
+        <p><?=$opponent_hero->combat ?></p>
       </div>
     </div>
     <?php endforeach; ?>
