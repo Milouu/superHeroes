@@ -45,6 +45,18 @@ class Match extends Model
   }
 
   /**
+   * Gets all the victories of a user,
+   * @param user_id, a user id
+   * @param league_id, a league id
+   */
+  public function getUserVictories($user_id, $league_id)
+  {
+    return $this->executeRequest(
+      'SELECT match_id FROM matches WHERE winner_id = ' . $user_id . ' AND league_id = ' . $league_id
+    );
+  }
+
+  /**
    * Sets all matches for a league
    * @param league_id, a league id
    * @param league_users, array containing league users
