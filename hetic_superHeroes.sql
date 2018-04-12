@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 12 avr. 2018 à 03:14
+-- Généré le :  jeu. 12 avr. 2018 à 09:18
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -38,11 +38,11 @@ CREATE TABLE IF NOT EXISTS `hands` (
   `hero3_id` int(11) NOT NULL,
   `hero4_id` int(11) NOT NULL,
   `hero5_id` int(11) NOT NULL,
-  `hero1_order` int(11) NOT NULL DEFAULT '1',
-  `hero2_order` int(11) NOT NULL DEFAULT '2',
-  `hero3_order` int(11) NOT NULL DEFAULT '3',
-  `hero4_order` int(11) NOT NULL DEFAULT '4',
-  `hero5_order` int(11) NOT NULL DEFAULT '5',
+  `hero1_order` int(11) NOT NULL DEFAULT '0',
+  `hero2_order` int(11) NOT NULL DEFAULT '0',
+  `hero3_order` int(11) NOT NULL DEFAULT '0',
+  `hero4_order` int(11) NOT NULL DEFAULT '0',
+  `hero5_order` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`hand_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 
