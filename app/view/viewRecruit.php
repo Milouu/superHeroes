@@ -1,6 +1,7 @@
 <?php $this->title = "Recruit Superheroes"; ?>
 
 <div class="container">
+  <p class="error"><?= isset($_POST['error']) ? $_POST['error'] : '' ?></p>
   <div class="row">
     <div class="col-lg-12 recruitHeader mt-5">Recruit superheroes</div>
   </div>
@@ -49,7 +50,7 @@
         <p><?=$hero->durability ?></p>
         <p><?=$hero->power ?></p>
         <p><?=$hero->combat ?></p>
-        <p class="price"><?= $hero->average ?> RP</p>
+        <p class="price"><?= $hero->average * 10 ?> RP</p>
         <input type="checkbox" name="selections[]" value="<?= $hero->hero_id ?>">
       </div>
     </div>

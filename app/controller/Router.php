@@ -6,6 +6,7 @@ require_once 'SigninController.php';
 require_once 'RecruitController.php';
 require_once 'LeaguesController.php';
 require_once 'DashboardController.php';
+require_once 'RulesController.php';
 
 class Router 
 {
@@ -15,6 +16,7 @@ class Router
   private $recruitCtrl;
   private $leaguesCtrl;
   private $dashboardCtrl;
+  private $rulesCtrl;
 
   public function __construct()
   {
@@ -24,6 +26,7 @@ class Router
     $this->recruitCtrl = new RecruitController();
     $this->leaguesCtrl = new LeaguesController();
     $this->dashboardCtrl = new DashboardController();
+    $this->rulesCtrl = new rulesController();
   }
   
   public function routeRequest()
@@ -43,6 +46,11 @@ class Router
         {
           $this->signinCtrl->trySignin();
           $this->signinCtrl->signin();
+        }
+  
+        else if($_GET['action'] == 'rules')
+        {
+          $this->rulesCtrl->rules();
         }
   
         else if($_GET['action'] == 'leagues')
@@ -90,7 +98,21 @@ class Router
           if(isset($_GET['league_id']))
           {
             $this->dashboardCtrl->setSessionLeagueId($_GET['league_id']);
-            $this->dashboardCtrl->dashboard($_GET['league_id']);
+
+            if(isset($_GET['option']))
+            {
+              if($_GET['option'] == 'tryLaunchLeague')
+              {
+                $this->dashboardCtrl->tryLaunchLeague($_GET['league_id']);
+                $this->dashboardCtrl->dashboard($_GET['league_id']);
+              }
+              else 
+                throw new Exception('Option is invalid.');
+            }
+            else
+            {
+              $this->dashboardCtrl->dashboard($_GET['league_id']);
+            }
           }
           else
             throw new Exception('No league ID');
@@ -101,7 +123,7 @@ class Router
           $this->recruitCtrl->recruit();
         }
 
-        else if($_GET['action'] = 'tryRecruit')
+        else if($_GET['action'] == 'tryRecruit')
         {
           $this->recruitCtrl->tryRecruit();
         }

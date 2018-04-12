@@ -30,9 +30,9 @@
           </div>
           <div class="nav navbar-right">
             <a class="mr-4" href="#">Rules</a>
-            <a class="mr-4" href="#">Dashboard</a>
+            <a class="mr-4" href="index.php?action=dashboard">Dashboard</a>
             <a class="mr-4 login <?= isset($_SESSION['user']) ? "connection--active": false ?>" href="index.php?action=signin"><img src="assets/images/user.svg"></img> Login</a>
-            <a class="mr-4 deconnection <?= isset($_SESSION['user']) ? "deconnection--active": false ?>" href="index.php?action=deconnection"><img src="assets/images/user.svg"></img> Deconnection</a>
+            <a class="mr-4 deconnection <?= isset($_SESSION['user']) ? "deconnection--active": false ?>" href="index.php?action=deconnection"><img src="assets/images/user.svg"></img> Disconnection</a>
           </div>
         </div>
       </nav>

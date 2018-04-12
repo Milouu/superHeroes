@@ -63,7 +63,7 @@ class LeaguesController
         // Empty POST
         $_POST['name'] = '';
 
-        header('Location: index.php?action=dashboard&league_id=' . $userData->league_id);
+        header('Location: index.php?action=dashboard&league_id=' . $userData['league_id']);
       }
     }
     
@@ -92,14 +92,16 @@ class LeaguesController
         'user_id' => $user_id
       );
 
+      
+
       $this->league->addLeagueUser($joinLeagueData);
   
-      $this->successMessage = 'League created';
-  
+      $this->successMessage = 'League joined';
+
       // Empty POST
       $_POST['code'] = '';
-
-      header('Location: index.php?action=dashboard&league_id=' . $joinLeagueData->league_id);
+    
+      header('Location: index.php?action=dashboard&league_id=' . $joinLeagueData['league_id']);
     }
     
     // Form not sent
