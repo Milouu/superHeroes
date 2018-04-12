@@ -84,6 +84,7 @@
       </form>
 </div>
 
-
-
-
+<div class="row">
+  <div class="heroBg"><img src="./assets/images/league.png" alt=""> </div>
+  
+</div>
