@@ -45,35 +45,35 @@
   </div>
 
 <?php foreach ($user_heroes as $user_hero): ?>
-<div class="cards col-lg-6 m-2">
+<div class="cards col-6 m-2">
   <div class="cardName"><?=$user_hero->hero_name ?></div>
-  <img class="cardImage" src="assets/images/captain.svg" alt="#"/>
-  <div class="data data_first">
-    <div class="intelligence datas">
-      <p>INTELLIGENCE</p>
-      <p><?=$user_hero->intelligence ?></p>
-    </div>
-    <div class="strenght datas">
-      <p>STRENGTH</p>
-      <p><?=$user_hero->strength ?></p>
-    </div>
-    <div class="speed datas">
-      <p>SPEED</p>
-      <p><?=$user_hero->speed ?></p>
-    </div>
-  </div>
-  <div class="data data_second">
-    <div class="durability datas">
-      <p>DURABILITY</p>
-      <p><?=$user_hero->durability ?></p>
-    </div>
-    <div class="power datas">
-      <p>POWER</p>
-      <p><?=$user_hero->power ?></p>
-    </div>
-    <div class="combat datas">
-      <p>COMBAT</p>
-      <p><?=$user_hero->combat ?></p>
+  <div class="statsGreatContainer">
+    <div><img src="assets/images/captain.svg" alt="#"></div>
+    <div class="statsContainer">
+      <div class="stats">
+        Intelligence
+        <div><?=$user_hero->intelligence ?></div>
+      </div>
+      <div class="stats">
+        Strength
+        <div><?=$user_hero->strength ?></div>
+      </div>
+      <div class="stats">
+        Speed
+        <div><?=$user_hero->speed ?></div>
+      </div>
+      <div class="stats">
+        Durability
+        <div><?=$user_hero->durability ?></div>
+      </div>
+      <div class="stats">
+        Power
+        <div><?=$user_hero->power ?></div>
+      </div>
+      <div class="stats">
+        Combat
+        <div><?=$user_hero->combat ?></div>
+      </div>
     </div>
   </div>
 </div>
