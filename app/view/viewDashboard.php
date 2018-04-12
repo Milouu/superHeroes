@@ -73,15 +73,16 @@
 
 <div class="row tableContainer">
   <div class="banner titles col-lg-12">
-    <h4>League Table</h4>
+    <h4>League Results</h4>
   </div>
-  <div class="table">
+  <div class="table col-md-6">
+    <h4>Current table</h4>
     <?php
       $positionKeys = array_keys($league_table);
       for($i = 0; $i < count($league_table); $i++):
     ?>
     <div class="position">
-      <div>
+      <div class="left">
         <p class="rank">n°<?= $i ?></p>
         <p class="user"><?= array_keys($league_table)[$i] ?></p>
       </div>
