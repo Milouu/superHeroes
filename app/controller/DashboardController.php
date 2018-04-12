@@ -18,14 +18,14 @@ class DashboardController
   private $hero;
   private $match;
   
-    public function __construct()
-    {
-      $this->league = new League();
-      $this->user = new User();
-      $this->hand = new Hand();
-      $this->hero = new Hero();
-      $this->match = new Match();
-    }
+  public function __construct()
+  {
+    $this->league = new League();
+    $this->user = new User();
+    $this->hand = new Hand();
+    $this->hero = new Hero();
+    $this->match = new Match();
+  }
 
   public function dashboard($league_id) 
   {
@@ -51,6 +51,8 @@ class DashboardController
 
     $opponent_heroes = $this->hand->getHeroesFromHand($opponent_hand);
 
+    $league_table = $this->getLeagueTable($league_id);
+
     $view = new View('Dashboard');
     $view->generate(array(
       'errorMessages' => $this->errorMessages,
@@ -60,7 +62,8 @@ class DashboardController
       'current_league_day' => $current_league_day, 
       'user_names' => $user_names,
       'user_heroes' => $user_heroes,
-      'opponent_heroes' => $opponent_heroes
+      'opponent_heroes' => $opponent_heroes,
+      'league_table' => $league_table
     ));
   }
 
@@ -103,21 +106,6 @@ class DashboardController
       $hero1 = $this->hero->getHero($hand1[$i]);
       $hero2 = $this->hero->getHero($hand2[$i]);
 
-      // if (count($hero1) < 1)
-      // {
-      //   echo '<pre>';
-      //   var_dump($matchDetails[0]->user1_id);
-      //   echo '</pre>';
-      //   echo $i;
-      // }
-      // if (count($hero2) < 1)
-      // {
-      //   echo '<pre>';
-      //   var_dump($matchDetails[0]->user2_id);
-      //   echo '</pre>';
-      //   echo $i;
-      // }
-
       // Get winner
       $hero1[0]->average > $hero2[0]->average ? $pointsUser1++ : $pointsUser2++;
     }
@@ -156,6 +144,32 @@ class DashboardController
 
     // Redirect to dashboard
     header('Location: index.php?action=dashboard&league_id=' . $league_id);
+  }
+
+  public function getLeagueTable($league_id)
+  {
+    $leagueUsers = $this->league->getLeagueUsers($league_id);
+    $userVictories = [];
+
+    foreach ($leagueUsers as $user)
+    {
+      $userVictories[$user->user_id] = count(
+        $this->match->getUserVictories($user->user_id, $league_id)
+      );
+    }
+
+    // Prepare sorting
+    function descendingSort($a, $b)
+    {
+      if ($a == $b)
+      {
+        return 0;
+      }
+      return ($a > $b) ? -1 : 1;
+    }
+
+    // Sort victories by users
+    return uasort($userVictories, 'descendingSort');
   }
   
   public function trySetOrder($user_id, $league_id)
