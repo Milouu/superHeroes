@@ -54,3 +54,7 @@
         </div>
     </div>
 </div>   
+
+<div>
+    <img class="leagueHeroB" src="./assets/images/spiderman.spng">
+</div>

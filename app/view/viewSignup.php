@@ -34,3 +34,6 @@
 
   </form>
 </div> 
+<div>
+    <img class="signupHeroB" src="./assets/images/spiderman.png">
+</div>

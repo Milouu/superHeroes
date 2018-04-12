@@ -95,6 +95,9 @@
   <?php endfor; ?>
 </div>
 
+<div>
+    <img class="leagueHeroB" src="./assets/images/league.spng">
+</div>
 
 
 

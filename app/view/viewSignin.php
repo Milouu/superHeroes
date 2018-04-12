@@ -25,3 +25,7 @@
 
   </form>
 </div> 
+
+<div>
+    <img class="signinHeroB" src="./assets/images/deadpool.png">
+</div>
