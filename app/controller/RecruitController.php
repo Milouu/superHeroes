@@ -13,7 +13,9 @@ class RecruitController
     $this->hero = new Hero();
   }
 
-  // Prepare recruitment page
+  /**
+   * Display recruit page
+   */
   public function recruit() 
   {
     $heroes = $this->hero->getHeroes(isset($_POST['sorting']) ? $_POST['sorting'] : 'average');
@@ -22,7 +24,9 @@ class RecruitController
     $view->generate(array('heroes' => $heroes));
   }
 
-  // Check if user recruitments are valid
+   /**
+    * Check if user recruitments are valid
+    */
   public function tryRecruit()
   {
     $errorMessage = '';

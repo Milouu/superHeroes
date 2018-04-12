@@ -17,6 +17,9 @@ class LeaguesController
     $this->league = new League();
   }
 
+  /**
+   * Display leagues page
+   */
   public function leagues($user_id)
   {
     $leagues = $this->league->getLeagues($user_id);
@@ -26,6 +29,9 @@ class LeaguesController
     $view->generate(array('leagues' => $leagues, 'league_names' => $league_names));   
   }
 
+  /**
+   * Handle errors in Create league form & creates new league if no errors
+   */
   public function tryAddLeague($user_id)
   {
     // Form sent
@@ -74,6 +80,9 @@ class LeaguesController
     }
   }
 
+  /**
+   * Handle errors in join league form & joins league if no errors
+   */
   public function tryJoinLeague($user_id)
   {
     // Form sent
@@ -91,8 +100,6 @@ class LeaguesController
         'league_id' => $_POST['code'],
         'user_id' => $user_id
       );
-
-      
 
       $this->league->addLeagueUser($joinLeagueData);
   

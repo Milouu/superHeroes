@@ -10,6 +10,10 @@ class View
     $this->file = 'view/view' . $action . '.php';
   }
 
+  /**
+   * Generates a view given data acquired from database
+   * @param data, array empty by default, possibly containing data from database used to create a page
+   */
   public function generate($data = array())
   {
     $contenu = $this->generateFile($this->file, $data);
@@ -19,6 +23,11 @@ class View
     echo $view;
   }
   
+  /**
+   * Generates a page from the given data if the view exists
+   * @param file, name of the view
+   * @param data, data passed from database
+   */
   private function generateFile($file, $data)
   {
     if(file_exists($file))

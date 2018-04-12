@@ -14,7 +14,7 @@
 
     <title><?= $title ?></title>
 
-    <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Arimo|Passion+One" rel="stylesheet">
 
     <!--build:css styles/styles.min.css-->
     <link rel="stylesheet" href="styles/css/reset.css" />

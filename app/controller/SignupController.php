@@ -17,12 +17,18 @@ class SignupController
     $this->user = new User();
   }
 
+  /**
+   * Display signup page
+   */
   public function signup()
   {
     $view = new View('Signup');
     $view->generate(array('errorMessages' => $this->errorMessages, 'successMessage' => $this->successMessage));
   }
 
+  /**
+   * Handle errors on sign up form & sign up user if no errors
+   */
   public function trySignup()
   { 
     // Form sent

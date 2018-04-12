@@ -4,6 +4,12 @@ require_once 'Model.php';
 
 class Match extends Model
 {
+  /**
+   * Gets the next match for a user in a league
+   * @param user_id, a user id
+   * @param league_id, a league id
+   * @param current_league_day, the current day of the league
+   */
   public function getNextMatch($user_id, $league_id, $current_league_day)
   {
     return $this->executeRequest('SELECT * FROM matches WHERE league_id = ' . $league_id . ' AND league_day = ' . $current_league_day->current_league_day . ' AND (user1_id = ' . $user_id . ' OR user2_id = ' . $user_id .' )');
@@ -14,6 +20,12 @@ class Match extends Model
     return $this->executeRequest('SELECT * FROM matches WHERE match_id = ' . $match_id);
   }
 
+  /**
+   * Gets all matches for a league day
+   * @param league_id, a league id
+   * @param league_day, a league day
+   * @return array containing the 4 matches of a league day
+   */
   public function getDayMatches($league_id, $league_day)
   {
     return $this->executeRequest(
@@ -21,6 +33,10 @@ class Match extends Model
     );
   }
 
+  /**
+   * Sets the result of a match
+   * @param resultData, array containing match infos
+   */
   public function setMatchResult($resultData)
   {
     $this->executeRequest(
@@ -28,6 +44,23 @@ class Match extends Model
     );
   }
 
+  /**
+   * Gets all the victories of a user,
+   * @param user_id, a user id
+   * @param league_id, a league id
+   */
+  public function getUserVictories($user_id, $league_id)
+  {
+    return $this->executeRequest(
+      'SELECT match_id FROM matches WHERE winner_id = ' . $user_id . ' AND league_id = ' . $league_id
+    );
+  }
+
+  /**
+   * Sets all matches for a league
+   * @param league_id, a league id
+   * @param league_users, array containing league users
+   */
   public function createLeagueMatches($league_id, $league_users)
   {
     $this->executeRequest('INSERT INTO matches (league_id, league_day, user1_id, user2_id) VALUES (:league_id, :league_day, :user1_id, :user2_id)', [

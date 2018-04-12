@@ -122,8 +122,8 @@
       <li class="opponentStats">Strength   &nbsp;</li>
       <li class="opponentStats">Speed  &nbsp;</li>
       <li class="opponentStats">Durability  &nbsp;</li>
-      <li class="opponentStats">Power  &nbsp;</li>
-      <li class="opponentStats">Combat  &nbsp;</li>
+      <li class="opponentStats">Power  &nbsp;></li>
+      <li class="opponentStats">Combat  &nbsp;<?=$opponent_hero->combat ?></li>
     </ul>
     <ul>
       <li class="opponentStats"><?=$opponent_hero->intelligence ?></li>
