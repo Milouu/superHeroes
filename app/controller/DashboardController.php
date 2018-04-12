@@ -98,12 +98,29 @@ class DashboardController
 
     $pointsUser1 = 0;
     $pointsUser2 = 0;
+
     // Simulate all 5 rounds
     for($i = 0; $i < 5; $i++)
     {
       $hero1 = $this->hero->getHero($hand1[$i]);
-      //$hand1[0];
+      $hero2 = $this->hero->getHero($hand2[$i]);
+
+      // Get winner
+      $hero1[0]->average > $hero2[0]->average ? $pointsUser1++ : $pointsUser2++;
     }
+
+    // Get winner
+    $winner = $pointsUser1 > $pointsUser2 ? $matchDetails[0]->user1_id : $matchDetails[0]->user2_id;
+
+
+    // Display results
+    echo $winner . ' won !';
+    echo '<pre>';
+    var_dump($pointsUser1);
+    echo '</pre>';
+    echo '<pre>';
+    var_dump($pointsUser2);
+    echo '</pre>';
   }
 
   public function setNextLeagueDay($league_id)
