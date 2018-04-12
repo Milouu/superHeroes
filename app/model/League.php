@@ -47,7 +47,6 @@ class League extends Model
 
   public function getCreatedLeagueId()
   {
-    // return $this->executeRequest('SELECT LAST_INSERT_ID() FROM leagues');
     return $this->getLastId();
   }
 }
