@@ -28,6 +28,13 @@ class Match extends Model
     );
   }
 
+  public function getUserVictories($user_id, $league_id)
+  {
+    return $this->executeRequest(
+      'SELECT match_id FROM matches WHERE winner_id = ' . $user_id . ' AND league_id = ' . $league_id
+    );
+  }
+
   public function createLeagueMatches($league_id, $league_users)
   {
     $this->executeRequest('INSERT INTO matches (league_id, league_day, user1_id, user2_id) VALUES (:league_id, :league_day, :user1_id, :user2_id)', [
