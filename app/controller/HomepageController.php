@@ -13,6 +13,9 @@ class HomepageController
     $this->hero = new Hero();
   }
 
+  /**
+   * Display homepage
+   */
   public function homepage() 
   {
     $view = new View('Homepage');

@@ -18,12 +18,18 @@ class SigninController
     $this->users = $this->user->getUsers();
   }
 
+  /**
+   * Display signin page
+   */
   public function signin()
   {
     $view = new View('Signin');
     $view->generate(array('errorMessages' => $this->errorMessages, 'successMessage' => $this->successMessage));
   }
 
+  /**
+   * Handle errors in sign in form and connection is there is no errors.
+   */
   public function trySignin()
   {
     //Form sent
@@ -50,6 +56,13 @@ class SigninController
     }
   }
 
+
+  /**
+   * Check if there is a user with the name and password passed as params
+   * @param $user_name, a user name
+   * @param $user_password, a user password
+   * @return 1 if user exists, 0 if not.
+   */
   public function connection_check($user_name, $user_password)
   {
     foreach($this->users as $user)
@@ -63,6 +76,9 @@ class SigninController
     return 0;
   }
 
+  /**
+   * Calls function to deconnect a user
+   */
   public function logout()
   {
     $this->user->deconnection();

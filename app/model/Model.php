@@ -4,6 +4,12 @@ abstract class Model
 {
   private $db; 
 
+  /**
+   * Executes an sql request
+   * @param sql, string containing the sql request
+   * @param params, array null by default containing possible variables for prepare
+   * @return result of the sql request
+   */
   protected function executeRequest($sql, $params = null) 
   {
     if(substr($sql, 0, 6) == 'SELECT')
@@ -22,11 +28,19 @@ abstract class Model
     return $result;
   }
 
+  /**
+   * Gets the last id inserted into database
+   * @return id 
+   */
   protected function getLastId()
   {
     return $this->getDb()->lastInsertId();
   }
 
+  /**
+   * Handles connection with the database
+   * @return object pdo
+   */
   private function getDb()
   {
     if($this->db == null)
