@@ -42,4 +42,13 @@ class Hero extends Model
     }
     return $user_heroes;
   }
+
+  public function getOrderedHeroesFromHand($user_hand)
+  {
+    $orderedHeroes = [];
+    for ($i = 0; $i < 5; $i++) { 
+      array_push($orderedHeroes, $user_hand[0]->{'hero' . strval($i + 1) . '_order'});
+    }
+    return $orderedHeroes;    
+  }
 }
