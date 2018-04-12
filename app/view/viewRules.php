@@ -4,7 +4,7 @@
   <div class="row">
     <div class="rulesTittle col-lg-12"><h2>Rules of the game</h2></div>
   </div>
-  <div class="container justify-content-center">
+  <div class="container">
     <div class="row">
     <div class="container col-lg-12">
         <div class="rulesText container col-lg-10">Hero Battlefield Tournament is a card-fighting system featuring superheroes from all walks of life. Between strategy and chance, it's up to you to compose a team of superheroes able to defeat your opponent and bring you to victory!
