@@ -92,8 +92,6 @@ class LeaguesController
         'user_id' => $user_id
       );
 
-      
-
       $this->league->addLeagueUser($joinLeagueData);
   
       $this->successMessage = 'League joined';
