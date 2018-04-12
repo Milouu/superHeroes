@@ -21,6 +21,13 @@ class Match extends Model
     );
   }
 
+  public function setMatchResult($resultData)
+  {
+    $this->executeRequest(
+      'UPDATE matches SET winner_id = :winner_id, looser_id = :looser_id, score = :score WHERE match_id = :match_id', $resultData
+    );
+  }
+
   public function createLeagueMatches($league_id, $league_users)
   {
     $this->executeRequest('INSERT INTO matches (league_id, league_day, user1_id, user2_id) VALUES (:league_id, :league_day, :user1_id, :user2_id)', [
