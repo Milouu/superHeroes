@@ -29,14 +29,27 @@ class DashboardController
 
   public function dashboard($league_id) 
   { 
-    $league_name = $this->league->getLeagueName($league_id);
+    $league_name = $this->league->getLeagueName($league_id)[0];
     $league_users = $this->league->getLeagueUsers($league_id);
-    $current_league_day = $this->league->getCurrentLeagueDay($league_id);
+    $current_league_day = $this->league->getCurrentLeagueDay($league_id)[0];
 
     $user_names = $this->user->getUserNames($league_users);
 
     $user_hand = $this->hand->getHand($_SESSION['user_id'], $league_id);
     $user_heroes = $this->hero->findHeroesFromHand($user_hand);
+
+    $next_match = $this->match->getNextMatch($_SESSION['user_id'], $league_id, $current_league_day)[0];
+
+    if($next_match->user1_id == $_SESSION['user_id'])
+    {
+      $opponent_hand = $this->hand->getHand($next_match->user2_id,$league_id);
+    }
+    else
+    {
+      $opponent_hand = $this->hand->getHand($next_match->user1_id,$league_id);
+    }
+
+    $opponent_heroes = $this->hero->findHeroesFromHand($opponent_hand);
 
     $view = new View('Dashboard');
     $view->generate(array(
@@ -46,7 +59,8 @@ class DashboardController
       'league_users' => $league_users,
       'current_league_day' => $current_league_day, 
       'user_names' => $user_names,
-      'user_heroes' => $user_heroes
+      'user_heroes' => $user_heroes,
+      'opponent_heroes' => $opponent_heroes
     ));
   }
 

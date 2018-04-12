@@ -2,13 +2,13 @@
   $this->title = "Dashboard";
 ?>
 
-<h1><?= $league_name[0]->league_name ?></h1>
+<h1><?= $league_name->league_name ?></h1>
 
-<a href="index.php?action=recruit&league_id=<?= $_GET['league_id'] ?>" style="display:<?= $current_league_day[0]->current_league_day ? 'none' : 'inline-block' ?>">
+<a href="index.php?action=recruit&league_id=<?= $_GET['league_id'] ?>" style="display:<?= $current_league_day->current_league_day ? 'none' : 'inline-block' ?>">
   Recrutement
 </a>
 
-<a href="index.php?action=dashboard&option=tryLaunchLeague&league_id=<?= $_GET['league_id'] ?>" style="display:<?= $current_league_day[0]->current_league_day ? 'none' : 'inline-block' ?>">
+<a href="index.php?action=dashboard&option=tryLaunchLeague&league_id=<?= $_GET['league_id'] ?>" style="display:<?= $current_league_day->current_league_day ? 'none' : 'inline-block' ?>">
   Launch League
 </a>
 
@@ -87,16 +87,16 @@
         <p>Combat</p>
       </div>
     </div>
-    <?php foreach ($user_heroes as $user_hero): ?>
+    <?php foreach($opponent_heroes as $opponent_hero): ?>
     <div class="heroLine">
-      <p class="name"><?=$user_hero->hero_name ?></p>
+      <p class="name"><?=$opponent_hero->hero_name ?></p>
       <div class="data">
-        <p><?=$user_hero->intelligence ?></p>
-        <p><?=$user_hero->strength ?></p>
-        <p><?=$user_hero->speed ?></p>
-        <p><?=$user_hero->durability ?></p>
-        <p><?=$user_hero->power ?></p>
-        <p><?=$user_hero->combat ?></p>
+        <p><?=$opponent_hero->intelligence ?></p>
+        <p><?=$opponent_hero->strength ?></p>
+        <p><?=$opponent_hero->speed ?></p>
+        <p><?=$opponent_hero->durability ?></p>
+        <p><?=$opponent_hero->power ?></p>
+        <p><?=$opponent_hero->combat ?></p>
       </div>
     </div>
     <?php endforeach; ?>
