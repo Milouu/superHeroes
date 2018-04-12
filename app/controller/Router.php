@@ -106,6 +106,11 @@ class Router
                 $this->dashboardCtrl->tryLaunchLeague($_GET['league_id']);
                 $this->dashboardCtrl->dashboard($_GET['league_id']);
               }
+              else if($_GET['option'] == 'trySetOrder')
+              {
+                $this->dashboardCtrl->trySetOrder($_SESSION['user_id'], $_GET['league_id']);
+                $this->dashboardCtrl->dashboard($_GET['league_id']);
+              }
               else 
                 throw new Exception('Option is invalid.');
             }

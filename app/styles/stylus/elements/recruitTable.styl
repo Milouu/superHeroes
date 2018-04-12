@@ -1,48 +1,31 @@
-.recruitList
-  display flex
-  flex-direction column
-  justify-content flex-end
-  width: 100% !important
+.row
+    text-align center
 
-  .labels
-    width 100%
-    display flex
-    flex-direction row
-    justify-content space-between
-    background red
-    color: #fff
+table  
+  text-align center 
 
-    p
-      width 120px
+.tableContainer
+  background-color whitish
 
-    .data
-      display flex
-      flex-direction row
-      justify-content flex-end
-
-  .heroLine
-    display flex
-    flex-direction row
-    justify-content space-between
-    border-bottom 1px solid red
-
-    p
-      width: 120px
-      color: white
-
-    .data
-      display flex
-      flex-direction row
-      justify-content flex-end
-
-
-
-.recruitHeader
-    height 50px
+.tableTitle
+    height 60px
     background-color header_orange
     text-align center
-    padding 10px
+    padding 15px
+    color whitish
+
+.tableHeader
+    background-color menu_yellow
 
 .budgetRemaining
+    padding-top 10px
+    padding-bottom 10px
     background-color header_orange
-    border-radius 20px
+    border-radius 10px
+    color whitish
+
+
+@media screen and (max-width: 620px) 
+    .displayTable 
+      display none
+

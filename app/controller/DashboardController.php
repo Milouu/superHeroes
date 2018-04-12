@@ -94,6 +94,56 @@ class DashboardController
       $this->match->setMatchResult($match->match_id);
     }
   }
+  
+  public function trySetOrder($user_id, $league_id)
+  {
+    //Form sent
+    if(!empty($_POST))
+    { 
+      $order = [
+        'order1' => $_POST['order1'],
+        'order2' => $_POST['order2'],
+        'order3' => $_POST['order3'],
+        'order4' => $_POST['order4'],
+        'order5' => $_POST['order5'],
+      ];
+
+      if(!($this->testOrder($order)))
+      {
+        $this->errorMessages['order'] = 'Each hero can only play once';
+      }
+
+      if(empty($this->errorMessages['order']))
+      {
+        $user_hand = $this->hand->getHand($_SESSION['user_id'], $_GET['league_id'])[0];
+        $order_ids = $this->hand->getIdsFromOrder($user_hand, $order);
+        $this->hand->setOrder($user_hand, $order_ids);
+
+        header('Location: index.php?action=dashboard&league_id=' .$_GET['league_id']);
+      }
+
+    }
+    // Form not sent
+    else 
+    {
+      // header('Location: '. $_SERVER['REQUEST_URI']);
+    }
+  }
+
+  public function testOrder($order)
+  {
+    for($i=1; $i <= count($order); $i++)
+    {
+      for($j=$i+1; $j <= count($order); $j++)
+      {
+        if($order['order'.$i] == $order['order'.$j])
+        {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
 
   public function setSessionLeagueId($league_id)
   {
