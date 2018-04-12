@@ -14,20 +14,14 @@ class Hero extends Model
     return $this->executeRequest('SELECT * FROM heroes WHERE hero_id = ' . $hero_id);
   }
 
-  public function buyHero($data)
+  public function setHand($data)
   {
     // Save purchase to recruitment table
     $this->executeRequest(
-      'INSERT INTO recruitment (hero_id, league_id, user_id, price) VALUES (:hero_id, :league_id, :user_id, :price)',
-      $data
+      'INSERT INTO hands (league_id, user_id, hero1_id, hero2_id, hero3_id, hero4_id, hero5_id, hero1_order, hero2_order, hero3_order, hero4_order, hero5_order) VALUES (:league_id, :user_id, :hero1_id, :hero2_id, :hero3_id, :hero4_id, :hero5_id, :hero1_order, :hero2_order, :hero3_order, :hero4_order, :hero5_order)', $data
     );
   }
 
-  public function getUserHeroes($user_id)
-  {
-    // 
-  }
-  
   public function findHeroesFromHand($user_hand)
   {
     $heroes = $this->executeRequest('SELECT * FROM heroes');
