@@ -90,7 +90,21 @@ class Router
           if(isset($_GET['league_id']))
           {
             $this->dashboardCtrl->setSessionLeagueId($_GET['league_id']);
-            $this->dashboardCtrl->dashboard($_GET['league_id']);
+
+            if(isset($_GET['option']))
+            {
+              if($_GET['option'] == 'tryLaunchLeague')
+              {
+                $this->dashboardCtrl->tryLaunchLeague($_GET['league_id']);
+                $this->dashboardCtrl->dashboard($_GET['league_id']);
+              }
+              else 
+                throw new Exception('Option is invalid.');
+            }
+            else
+            {
+              $this->dashboardCtrl->dashboard($_GET['league_id']);
+            }
           }
           else
             throw new Exception('No league ID');
@@ -101,7 +115,7 @@ class Router
           $this->recruitCtrl->recruit();
         }
 
-        else if($_GET['action'] = 'tryRecruit')
+        else if($_GET['action'] == 'tryRecruit')
         {
           $this->recruitCtrl->tryRecruit();
         }

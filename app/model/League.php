@@ -47,7 +47,22 @@ class League extends Model
 
   public function getCreatedLeagueId()
   {
-    // return $this->executeRequest('SELECT LAST_INSERT_ID() FROM leagues');
     return $this->getLastId();
+  }
+
+  public function getCurrentLeagueDay($league_id)
+  {
+    return $this->executeRequest('SELECT current_league_day FROM leagues WHERE league_id=' . $league_id);
+  }
+
+  public function incrementCurrentLeagueDay($league_id)
+  {
+    $current_league_day = $this->getCurrentLeagueDay($league_id);
+    $this->executeRequest('UPDATE leagues SET current_league_day=' . $current_league_day[0]->current_league_day+1 . ' WHERE league_id=' . $league_id);
+  }
+
+  public function initCurrentLeagueDay($league_id)
+  {
+    $this->executeRequest('UPDATE leagues SET current_league_day = 1 WHERE league_id=' . $league_id);
   }
 }
