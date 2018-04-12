@@ -29,7 +29,7 @@ class DashboardController
 
   public function dashboard($league_id) 
   {
-    $this->match->setNextLeagueDay($league_id, 2);
+    $this->setNextLeagueDay($league_id, 2);
 
     $league_name = $this->league->getLeagueName($league_id)[0];
     $league_users = $this->league->getLeagueUsers($league_id);
@@ -96,19 +96,14 @@ class DashboardController
       $this->hand->getHand($matchDetails[0]->user2_id, $matchDetails[0]->league_id)
     );
 
-    echo '<pre>';
-    var_dump($hand1);
-    echo '</pre>';
-    echo ' VERSUS ';
-    echo '<pre>';
-    var_dump($hand2);
-    echo '</pre>';
-
+    $pointsUser1 = 0;
+    $pointsUser2 = 0;
     // Simulate all 5 rounds
-    // for($i = 0; $i < 5; $i++)
-    // {
-    //   echo $hand2->{''}
-    // }
+    for($i = 0; $i < 5; $i++)
+    {
+      $hero1 = $this->hero->getHero($hand[$i]);
+      //$hand1[0];
+    }
   }
 
   public function setNextLeagueDay($league_id)
