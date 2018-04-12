@@ -185,7 +185,9 @@ class DashboardController
     }
 
     // Sort victories by users
-    return uasort($userVictories, 'descendingSort');
+    uasort($userVictories, 'descendingSort');
+
+    return $userVictories;
   }
   
   /**
