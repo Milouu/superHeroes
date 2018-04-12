@@ -1,13 +1,13 @@
 <?php $this->title = "Super Heroes" ?>
 
 <div class="row">
-<div>
-    <img class="homepageImg" src="./assets/images/cpt-america.svg">
-</div>
+    <div>
+        <img class="homepageImg" src="./assets/images/cpt-america.svg">
+    </div>
        
-<div class="col-3 offset-8">
-    <img class="homepageImg" src="./assets/images/ironman.svg">
-</div>
+    <div class="col-3 offset-8">
+        <img class="homepageImg" src="./assets/images/ironman.svg">
+    </div>
 </div>
 
 <div class="container">
