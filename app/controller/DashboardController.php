@@ -101,7 +101,7 @@ class DashboardController
     // Simulate all 5 rounds
     for($i = 0; $i < 5; $i++)
     {
-      $hero1 = $this->hero->getHero($hand[$i]);
+      $hero1 = $this->hero->getHero($hand1[$i]);
       //$hand1[0];
     }
   }
