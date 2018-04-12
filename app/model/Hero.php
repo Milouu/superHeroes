@@ -13,4 +13,9 @@ class Hero extends Model
   {
     return $this->executeRequest('SELECT * FROM heroes WHERE hero_id = ' . $hero_id);
   }
+
+  // public function getHeroImage($hero_id)
+  // {
+  //   return $this->executeRequest('SELECT ')
+  // }
 }

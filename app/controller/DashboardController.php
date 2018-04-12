@@ -28,7 +28,9 @@ class DashboardController
     }
 
   public function dashboard($league_id) 
-  { 
+  {
+    $this->match->setNextLeagueDay($league_id, 2);
+
     $league_name = $this->league->getLeagueName($league_id)[0];
     $league_users = $this->league->getLeagueUsers($league_id);
     $current_league_day = $this->league->getCurrentLeagueDay($league_id)[0];
@@ -79,6 +81,17 @@ class DashboardController
     else 
     {
       $this->errorMessages['tryLaunchLeague'] = 'Need 8 players to launch league';
+    }
+  }
+
+  public function setNextLeagueDay($league_id, $current_league_day)
+  {
+    $dayMatches = $this->match->getDayMatches($league_id, $current_league_day);
+
+    // Set all results for that day
+    foreach ($dayMatches as $match)
+    {
+      $this->match->setMatchResult($match->match_id);
     }
   }
 
