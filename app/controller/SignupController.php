@@ -76,6 +76,8 @@ class SignupController
         $_POST['name'] = '';
         $_POST['password'] = '';
         $_POST['mail'] = '';
+
+        header('Location: index.php?action=signin');
       }
     }
     
