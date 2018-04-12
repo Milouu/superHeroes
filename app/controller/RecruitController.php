@@ -45,7 +45,7 @@ class RecruitController
       $errorMessage = 'Your heroes cost ' . $totalPrice . ' RP, but you only have 3500 RP';
     }
 
-    if (strlen($errorMessage) > 0) 
+    if (strlen($errorMessage) > 0)
     {
       // Get heroes from database
       $heroes = $this->hero->getHeroes(isset($_POST['sorting']) ? $_POST['sorting'] : 'average');
@@ -57,19 +57,20 @@ class RecruitController
     }
     else
     {
-      // Save purchases to database
-      foreach ($selections as $selectedHero)
-      {
-        $detailedHero = $this->hero->getHero($selectedHero);
-        $purchaseData = array(
-          'hero_id' => $selectedHero,
-          'league_id' => $_GET['league_id'],
-          'user_id' => $_SESSION['user_id'],
-          'price' => $detailedHero[0]->average * 10
-        );
+      $handData = array(
+        'league_id' => $_GET['league_id'],
+        'user_id' => $_SESSION['user_id']
+      );
 
-        $this->hero->buyHero($purchaseData);
+      // Prepare saving hand to database
+      for ($i = 0; $i < 5; $i++)
+      {
+        $handData['hero' . strval($i + 1) . '_id'] = $selections[$i];
+        $handData['hero' . strval($i + 1) . '_order'] = $selections[$i];
       }
+
+      // Save hand to database
+      $this->hero->setHand($handData);
     }
   }
 }
