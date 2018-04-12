@@ -37,6 +37,32 @@
 
 <!-- Dynamic page elements popins -->
 
+<div class="backgroundPopin popin <?= ($_GET['option'] == 'create') ? "popin--black" : false ?>">
+  <div class="container popin <?= ($_GET['option'] == 'create') ? "popin--active" : false ?>">
+
+      <form class="formWhite" action="index.php?action=leagues&option=tryCreation" method="POST">
+
+      <div class="flexPopin">
+        <h2 class="formTitle col-lg-12">NEW LEAGUE</h2>
+        <a class="closePopin" href="index.php?action=leagues">X</a>
+      </div>
+      
+  
+      <div class="inputContainer">
+        <input placeholder="Enter league name" type="text" name="name" id="name" value="<?= isset($_POST['name']) ? $_POST['name'] : '' ?>" class=" <?= isset($errorMessages['name']) ? "error--active" : false ?>">
+        <div class="errorMessages col-lg-6 <?= !empty($errorMessages['name']) ? 'errorMessages--active' : '' ?>"><?= $errorMessages['name'] ?></div>
+      </div>
+  
+      <br>
+  
+      <div class="successMessages <?= !empty($successMessage) ? "successMessages--active" : false ?>"><?= $successMessage ?></div>
+  
+      <input type="submit" value="Create" class="formButton">
+  
+      </form>
+  </div>
+</div>
+
 <div class="popin <?= ($_GET['option'] == 'join') ? "popin--black" : false ?>">
   <div class="container popin <?= ($_GET['option'] == 'join') ? "popin--active" : false ?>">
       <form action="index.php?action=leagues&option=tryJoin" class="formWhite" method="POST">
@@ -67,32 +93,6 @@
     <?= array_values($league_names)[$i][0]->league_name ?>
   </a>
   <?php endfor; ?>
-</div>
-
-<div class="backgroundPopin popin <?= ($_GET['option'] == 'create') ? "popin--black" : false ?>">
-  <div class="container popin <?= ($_GET['option'] == 'create') ? "popin--active" : false ?>">
-
-      <form class="formWhite" action="index.php?action=leagues&option=tryCreation" method="POST">
-
-      <div class="flexPopin">
-        <h2 class="formTitle col-lg-12">NEW LEAGUE</h2>
-        <a class="closePopin" href="index.php?action=leagues">X</a>
-      </div>
-      
-  
-      <div class="inputContainer">
-        <input placeholder="Enter league name" type="text" name="name" id="name" value="<?= isset($_POST['name']) ? $_POST['name'] : '' ?>" class=" <?= isset($errorMessages['name']) ? "error--active" : false ?>">
-        <div class="errorMessages col-lg-6 <?= !empty($errorMessages['name']) ? 'errorMessages--active' : '' ?>"><?= $errorMessages['name'] ?></div>
-      </div>
-  
-      <br>
-  
-      <div class="successMessages <?= !empty($successMessage) ? "successMessages--active" : false ?>"><?= $successMessage ?></div>
-  
-      <input type="submit" value="Create" class="formButton">
-  
-      </form>
-  </div>
 </div>
 
 
