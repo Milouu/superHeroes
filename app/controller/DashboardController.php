@@ -29,7 +29,7 @@ class DashboardController
 
   public function dashboard($league_id) 
   {
-    $this->match->setNextLeagueDay($league_id, 2);
+    $this->setNextLeagueDay($league_id, 2);
 
     $league_name = $this->league->getLeagueName($league_id)[0];
     $league_users = $this->league->getLeagueUsers($league_id);
@@ -84,14 +84,37 @@ class DashboardController
     }
   }
 
-  public function setNextLeagueDay($league_id, $current_league_day)
+  public function getMatchResult($match_id)
   {
-    $dayMatches = $this->match->getDayMatches($league_id, $current_league_day);
+    $matchDetails = $this->match->getMatchDetails($match_id);
+
+    // Get user hands
+    $hand1 = $this->hand->getOrderedHeroesFromHand(
+      $this->hand->getHand($matchDetails[0]->user1_id, $matchDetails[0]->league_id)
+    );
+    $hand2 = $this->hand->getOrderedHeroesFromHand(
+      $this->hand->getHand($matchDetails[0]->user2_id, $matchDetails[0]->league_id)
+    );
+
+    $pointsUser1 = 0;
+    $pointsUser2 = 0;
+    // Simulate all 5 rounds
+    for($i = 0; $i < 5; $i++)
+    {
+      $hero1 = $this->hero->getHero($hand1[$i]);
+      //$hand1[0];
+    }
+  }
+
+  public function setNextLeagueDay($league_id)
+  {
+    $currentLeagueDay = $this->league->getCurrentLeagueDay($league_id)[0]->current_league_day;
+    $dayMatches = $this->match->getDayMatches($league_id, $currentLeagueDay);
 
     // Set all results for that day
     foreach ($dayMatches as $match)
     {
-      $this->match->setMatchResult($match->match_id);
+      $this->getMatchResult($match->match_id);
     }
   }
   
