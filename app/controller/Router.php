@@ -115,7 +115,7 @@ class Router
           $this->recruitCtrl->recruit();
         }
 
-        else if($_GET['action'] = 'tryRecruit')
+        else if($_GET['action'] == 'tryRecruit')
         {
           $this->recruitCtrl->tryRecruit();
         }
