@@ -57,8 +57,13 @@ class League extends Model
 
   public function incrementCurrentLeagueDay($league_id)
   {
-    $current_league_day = $this->getCurrentLeagueDay($league_id);
-    $this->executeRequest('UPDATE leagues SET current_league_day=' . $current_league_day[0]->current_league_day+1 . ' WHERE league_id=' . $league_id);
+    // Prepare request to database
+    $data = array(
+      'day' => strval($this->getCurrentLeagueDay($league_id)[0]->current_league_day+1),
+      'league_id' => $league_id
+    );
+    // Update current day in database
+    $this->executeRequest('UPDATE leagues SET current_league_day = :day WHERE league_id = :league_id', $data);
   }
 
   public function initCurrentLeagueDay($league_id)

@@ -29,8 +29,6 @@ class DashboardController
 
   public function dashboard($league_id) 
   {
-    $this->setNextLeagueDay($league_id, 2);
-
     $league_name = $this->league->getLeagueName($league_id)[0];
     $league_users = $this->league->getLeagueUsers($league_id);
     $current_league_day = $this->league->getCurrentLeagueDay($league_id)[0];
@@ -98,12 +96,49 @@ class DashboardController
 
     $pointsUser1 = 0;
     $pointsUser2 = 0;
+
     // Simulate all 5 rounds
     for($i = 0; $i < 5; $i++)
     {
       $hero1 = $this->hero->getHero($hand1[$i]);
-      //$hand1[0];
+      $hero2 = $this->hero->getHero($hand2[$i]);
+
+      // if (count($hero1) < 1)
+      // {
+      //   echo '<pre>';
+      //   var_dump($matchDetails[0]->user1_id);
+      //   echo '</pre>';
+      //   echo $i;
+      // }
+      // if (count($hero2) < 1)
+      // {
+      //   echo '<pre>';
+      //   var_dump($matchDetails[0]->user2_id);
+      //   echo '</pre>';
+      //   echo $i;
+      // }
+
+      // Get winner
+      $hero1[0]->average > $hero2[0]->average ? $pointsUser1++ : $pointsUser2++;
     }
+
+    // Calculate score
+    $score = $pointsUser1 . '-' . $pointsUser2;
+
+    // Get winner
+    $winner = $pointsUser1 > $pointsUser2 ? $matchDetails[0]->user1_id : $matchDetails[0]->user2_id;
+    $looser = $pointsUser1 < $pointsUser2 ? $matchDetails[0]->user1_id : $matchDetails[0]->user2_id;
+
+    // Prepare saving to database
+    $resultData = array(
+      'winner_id' => $winner,
+      'looser_id' => $looser,
+      'score' => $score,
+      'match_id' => $match_id
+    );
+
+    // Save result to database
+    $this->match->setMatchResult($resultData);
   }
 
   public function setNextLeagueDay($league_id)
@@ -116,6 +151,11 @@ class DashboardController
     {
       $this->getMatchResult($match->match_id);
     }
+
+    $this->league->incrementCurrentLeagueDay($league_id);
+
+    // Redirect to dashboard
+    header('Location: index.php?action=dashboard&league_id=' . $league_id);
   }
   
   public function trySetOrder($user_id, $league_id)
