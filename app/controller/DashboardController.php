@@ -29,8 +29,6 @@ class DashboardController
 
   public function dashboard($league_id) 
   {
-    $this->setNextLeagueDay($league_id, 2);
-
     $league_name = $this->league->getLeagueName($league_id)[0];
     $league_users = $this->league->getLeagueUsers($league_id);
     $current_league_day = $this->league->getCurrentLeagueDay($league_id)[0];
@@ -153,6 +151,11 @@ class DashboardController
     {
       $this->getMatchResult($match->match_id);
     }
+
+    $this->league->incrementCurrentLeagueDay($league_id);
+
+    // Redirect to dashboard
+    header('Location: index.php?action=dashboard&league_id=' . $league_id);
   }
   
   public function trySetOrder($user_id, $league_id)
