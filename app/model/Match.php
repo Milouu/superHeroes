@@ -9,6 +9,38 @@ class Match extends Model
     return $this->executeRequest('SELECT * FROM matches WHERE league_id = ' . $league_id . ' AND league_day = ' . $current_league_day->current_league_day . ' AND (user1_id = ' . $user_id . ' OR user2_id = ' . $user_id .' )');
   }
 
+  public function getDayMatches($league_id, $league_day)
+  {
+    return $this->executeRequest(
+      'SELECT * FROM matches WHERE league_id = ' . $league_id . ' AND league_day = ' . $league_day
+    );
+  }
+
+  public function setNextLeagueDay($league_id, $current_league_day)
+  {
+    $dayMatches = $this->match->getDayMatches($league_id, $current_league_day);
+  }
+
+  public function setMatchResult($user_id, $league_id, $current_league_day)
+  {
+    $match = $this->match->getNextMatch($user_id, $league_id, $current_league_day);
+    $opponent = $match[0]->user2_id;
+
+    // Get user hands
+    $playerHand = $this->hero->getOrderedHeroesFromHand(
+      $this->hero->getUserHand($user_id, $league_id)
+    );
+    $hand2 = $this->hero->getOrderedHeroesFromHand(
+      $this->hero->getUserHand($user_id, $league_id)
+    );
+
+    // Simulate all 5 rounds
+    for($i = 0; $i < 5; $i++)
+    {
+
+    }
+  }
+
   public function createLeagueMatches($league_id, $league_users)
   {
     $this->executeRequest('INSERT INTO matches (league_id, league_day, user1_id, user2_id) VALUES (:league_id, :league_day, :user1_id, :user2_id)', [

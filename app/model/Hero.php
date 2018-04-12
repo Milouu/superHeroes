@@ -22,6 +22,13 @@ class Hero extends Model
     );
   }
 
+  public function getUserHand($user_id, $league_id)
+  {
+    return $this->executeRequest(
+      'SELECT hand_id FROM hands WHERE user_id = ' . $user_id . ' AND league_id = ' . $league_id
+    );
+  }
+
   public function findHeroesFromHand($user_hand)
   {
     $heroes = $this->executeRequest('SELECT * FROM heroes');
