@@ -38,5 +38,8 @@
         <div class="contenu">
           <?= $contenu ?>
         </div>
+      <footer class="footer">
+        <p class="footerText">© HETIC P2021 - Group 15</p>
+      </footer>
   </body>
 </html>
