@@ -169,7 +169,11 @@ class DashboardController
 
     foreach ($leagueUsers as $user)
     {
-      $userVictories[$user->user_id] = count(
+      // Get username from user id
+      $userName = $this->user->getUserNames([$user])[0];
+
+      // Get his victories
+      $userVictories[$userName[0]->user_name] = count(
         $this->match->getUserVictories($user->user_id, $league_id)
       );
     }
