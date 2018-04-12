@@ -75,3 +75,4 @@ class Hand extends Model
     $this->executeRequest('UPDATE hands SET hero4_order=' . $order_ids['order4_id']->hero_id);
     $this->executeRequest('UPDATE hands SET hero5_order=' . $order_ids['order5_id']->hero_id);
   }
+} 
