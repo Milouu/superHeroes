@@ -12,7 +12,7 @@
             <button class="registerButton"><a href="index.php?action=signup">I want to register !</a></button>
         </div>
         <div class="row justify-content-center mt-3">
-            <button class="readTheRulesButton"><a href="#">I want to read the rules first</a></button>
+            <button class="readTheRulesButton"><a href="index.php?action=rules">I want to read the rules first</a></button>
         </div>
         <div class="row">
             <a href="index.php?action=signin" class="mt-2 mb-3 col-lg-4 offset-lg-4 col-md-4 offset-md-4 col-sm-4 offset-sm-4 col-xs-4 offset-xs-4 signInLink">I already have an account !</a>
