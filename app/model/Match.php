@@ -27,11 +27,11 @@ class Match extends Model
     $opponent = $match[0]->user2_id;
 
     // Get user hands
-    $playerHand = $this->hero->getOrderedHeroesFromHand(
-      $this->hero->getUserHand($user_id, $league_id)
+    $playerHand = $this->hand->getOrderedHeroesFromHand(
+      $this->hero->getHand($user_id, $league_id)
     );
-    $hand2 = $this->hero->getOrderedHeroesFromHand(
-      $this->hero->getUserHand($user_id, $league_id)
+    $hand2 = $this->hand->getOrderedHeroesFromHand(
+      $this->hero->getHand($user_id, $league_id)
     );
 
     // Simulate all 5 rounds

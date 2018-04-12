@@ -36,7 +36,7 @@ class DashboardController
     $user_names = $this->user->getUserNames($league_users);
 
     $user_hand = $this->hand->getHand($_SESSION['user_id'], $league_id);
-    $user_heroes = $this->hero->findHeroesFromHand($user_hand);
+    $user_heroes = $this->hand->getHeroesFromHand($user_hand);
 
     $next_match = $this->match->getNextMatch($_SESSION['user_id'], $league_id, $current_league_day)[0];
 
@@ -49,7 +49,7 @@ class DashboardController
       $opponent_hand = $this->hand->getHand($next_match->user1_id,$league_id);
     }
 
-    $opponent_heroes = $this->hero->findHeroesFromHand($opponent_hand);
+    $opponent_heroes = $this->hand->getHeroesFromHand($opponent_hand);
 
     $view = new View('Dashboard');
     $view->generate(array(
