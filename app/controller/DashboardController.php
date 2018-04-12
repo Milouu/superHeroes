@@ -27,6 +27,10 @@ class DashboardController
     $this->match = new Match();
   }
 
+  /**
+   * Display dashboard page for the league with id given as param
+   * @param league_id, A league id
+   */
   public function dashboard($league_id) 
   {
     $league_name = $this->league->getLeagueName($league_id)[0];
@@ -67,6 +71,10 @@ class DashboardController
     ));
   }
 
+  /**
+   * Handle errors when trying to launch league and launches it if no errors
+   * @param league_id, a league id
+   */
   public function tryLaunchLeague($league_id)
   {
     $league_users = $this->league->getLeagueUsers($league_id);
@@ -85,6 +93,10 @@ class DashboardController
     }
   }
 
+  /**
+   * Calculate a match result
+   * @param match_id, a match id
+   */
   public function getMatchResult($match_id)
   {
     $matchDetails = $this->match->getMatchDetails($match_id);
@@ -129,6 +141,10 @@ class DashboardController
     $this->match->setMatchResult($resultData);
   }
 
+  /**
+   * Calculate all result for the day in a league and increment the league day
+   * @param league_id, a league id
+   */
   public function setNextLeagueDay($league_id)
   {
     $currentLeagueDay = $this->league->getCurrentLeagueDay($league_id)[0]->current_league_day;
@@ -172,6 +188,11 @@ class DashboardController
     return uasort($userVictories, 'descendingSort');
   }
   
+  /**
+   * Handle errors when trying to set heroes order for next match
+   * @param user_id, a user id
+   * @param league_id, a league id
+   */
   public function trySetOrder($user_id, $league_id)
   {
     //Form sent
@@ -207,6 +228,10 @@ class DashboardController
     }
   }
 
+  /**
+   * Tests that no hero has been used at least 2 times in the order
+   * @param order, an array containing the hero id for each round in the next match
+   */
   public function testOrder($order)
   {
     for($i=1; $i <= count($order); $i++)
@@ -222,6 +247,10 @@ class DashboardController
     return true;
   }
 
+  /**
+   * Sets session variable league_id
+   * @param league_id, a league id
+   */
   public function setSessionLeagueId($league_id)
   {
     $_SESSION['league_id'] = $league_id;

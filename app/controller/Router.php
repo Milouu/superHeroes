@@ -29,6 +29,9 @@ class Router
     $this->rulesCtrl = new rulesController();
   }
   
+  /**
+  * Display pages dynamically depending on the action & option GET variables
+  */
   public function routeRequest()
   {
     try
@@ -157,6 +160,9 @@ class Router
     }
   }
 
+  /**
+   * Display caught errors on a page
+   */
   private function error($errorMsg)
   {
     $view = new View('error');
