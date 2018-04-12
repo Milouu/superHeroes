@@ -4,7 +4,9 @@
 
 <div class="container leagueContainer pb-4">
   <div class="row">
-    <div class="col-lg-12 border-bottom border-dark pt-2 pb-2">YOUR LEAGUES</div>
+    <div class="col-lg-12 border-dark pt-2 pb-2 banner">
+      <h4>Your leagues</h4>
+    </div>
   </div>
   <div class="container justify-content-center">
     <div class="row">
