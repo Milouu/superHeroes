@@ -70,7 +70,7 @@ class RecruitController
       }
 
       // Save hand to database
-      $this->hero->setHand($handData);
+      $this->hand->setHand($handData);
 
       // Redirect to dashboard
       header('Location: index.php?action=dashboard&league_id=' . $_GET['league_id']);

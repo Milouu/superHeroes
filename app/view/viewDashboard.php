@@ -127,7 +127,7 @@
         <p><?=$opponent_hero->intelligence ?></p>
         <p><?=$opponent_hero->strength ?></p>
         <p><?=$opponent_hero->speed ?></p>
-        <p><?=$opponent_hero->durability ?></p>
+      x  <p><?=$opponent_hero->durability ?></p>
         <p><?=$opponent_hero->power ?></p>
         <p><?=$opponent_hero->combat ?></p>
       </div>
@@ -135,4 +135,52 @@
     <?php endforeach; ?>
   </div>
 
+  <br>
+
+  <h2>Select your order</h2>
+
+  <div class="recruitList">
+    <div class="labels">
+      <p>Name</p>
+      <div class="data">
+        <p>Intelligence</p>
+        <p>Strength</p>
+        <p>Speed</p>
+        <p>Durability</p>
+        <p>Power</p>
+        <p>Combat</p>
+        <p>1st Hero</p>
+        <p>2nd Hero</p>
+        <p>3rd Hero</p>
+        <p>4th Hero</p>
+        <p>5th Hero</p>
+      </div>
+    </div>
+    <form action="index.php?action=dashboard&option=trySetOrder&league_id=<?= $_SESSION['league_id'] ?>" method="POST" class="recruitList">
+    <?php 
+    $i=0; 
+    foreach ($user_heroes as $user_hero): 
+    ?>
+    <div class="heroLine">
+      <p class="name"><?=$user_hero->hero_name ?></p>
+      <div class="data">
+        <p><?=$user_hero->intelligence ?></p>
+        <p><?=$user_hero->strength ?></p>
+        <p><?=$user_hero->speed ?></p>
+        <p><?=$user_hero->durability ?></p>
+        <p><?=$user_hero->power ?></p>
+        <p><?=$user_hero->combat ?></p>
+        <p><input type="radio" name="order1" value="<?= ++$i ?>">N°1</p>
+        <p><input type="radio" name="order2" value="<?= $i ?>">N°2</p>
+        <p><input type="radio" name="order3" value="<?= $i ?>">N°3</p>
+        <p><input type="radio" name="order4" value="<?= $i ?>">N°4</p>
+        <p><input type="radio" name="order5" value="<?= $i ?>">N°5</p>
+      </div>
+    </div>
+    <?php endforeach; ?>
+    <input type="submit" value="Set order" class="formButton">
+    </form>
+  </div>
+
 </div>
+
