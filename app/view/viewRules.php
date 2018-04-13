@@ -94,7 +94,7 @@
     </div>
     <img src="assets/images/batman.svg" alt="Batman" class="batman"/>
     <div class="row mt-4">
-      <button class="rulesButton col-lg-2 offset-lg-2"><a href="index.php?action=leagues&option=create">Start a game</a></button>
+      <button class="rulesButton col-lg-2 offset-lg-2"><a href="index.php?action=leagues">Start a game</a></button>
     </div>
     <img src="assets/images/rocket.svg" alt="Rocket Racoon" class="rocket"/>
   </div>
