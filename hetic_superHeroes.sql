@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Client :  localhost:8889
--- Généré le :  Jeu 12 Avril 2018 à 18:51
--- Version du serveur :  5.6.35
--- Version de PHP :  7.0.15
+-- Hôte : 127.0.0.1:3306
+-- Généré le :  ven. 13 avr. 2018 à 05:32
+-- Version du serveur :  5.7.19
+-- Version de PHP :  5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -26,8 +28,9 @@ SET time_zone = "+00:00";
 -- Structure de la table `hands`
 --
 
-CREATE TABLE `hands` (
-  `hand_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `hands`;
+CREATE TABLE IF NOT EXISTS `hands` (
+  `hand_id` int(11) NOT NULL AUTO_INCREMENT,
   `league_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `hero1_id` int(11) NOT NULL,
@@ -35,26 +38,48 @@ CREATE TABLE `hands` (
   `hero3_id` int(11) NOT NULL,
   `hero4_id` int(11) NOT NULL,
   `hero5_id` int(11) NOT NULL,
-  `hero1_order` int(11) NOT NULL DEFAULT '0',
-  `hero2_order` int(11) NOT NULL DEFAULT '0',
-  `hero3_order` int(11) NOT NULL DEFAULT '0',
-  `hero4_order` int(11) NOT NULL DEFAULT '0',
-  `hero5_order` int(11) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+  `hero1_order` int(11) NOT NULL DEFAULT '1',
+  `hero2_order` int(11) NOT NULL DEFAULT '2',
+  `hero3_order` int(11) NOT NULL DEFAULT '3',
+  `hero4_order` int(11) NOT NULL DEFAULT '4',
+  `hero5_order` int(11) NOT NULL DEFAULT '5',
+  PRIMARY KEY (`hand_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4;
 
 --
--- Contenu de la table `hands`
+-- Déchargement des données de la table `hands`
 --
 
 INSERT INTO `hands` (`hand_id`, `league_id`, `user_id`, `hero1_id`, `hero2_id`, `hero3_id`, `hero4_id`, `hero5_id`, `hero1_order`, `hero2_order`, `hero3_order`, `hero4_order`, `hero5_order`) VALUES
-(1, 11, 10, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5),
-(2, 11, 8, 201, 202, 203, 204, 421, 8, 201, 202, 203, 204),
-(3, 11, 11, 421, 422, 423, 424, 425, 421, 422, 423, 424, 425),
-(4, 11, 12, 452, 459, 454, 455, 456, 452, 459, 454, 455, 456),
-(5, 11, 13, 11, 12, 13, 14, 15, 11, 12, 13, 14, 15),
-(6, 11, 14, 172, 174, 176, 178, 180, 172, 174, 176, 178, 180),
-(7, 11, 15, 350, 351, 352, 353, 355, 350, 351, 352, 353, 355),
-(8, 11, 9, 495, 496, 497, 498, 499, 495, 496, 497, 498, 499);
+(1, 11, 10, 1, 2, 3, 4, 5, 278, 228, 467, 495, 541),
+(2, 11, 8, 201, 202, 203, 204, 206, 278, 228, 467, 495, 541),
+(3, 11, 11, 421, 422, 423, 424, 425, 278, 228, 467, 495, 541),
+(4, 11, 12, 452, 453, 454, 455, 456, 278, 228, 467, 495, 541),
+(5, 11, 13, 11, 12, 13, 14, 15, 278, 228, 467, 495, 541),
+(6, 11, 14, 172, 174, 176, 178, 180, 278, 228, 467, 495, 541),
+(7, 11, 15, 350, 351, 352, 353, 354, 278, 228, 467, 495, 541),
+(8, 11, 9, 495, 496, 497, 498, 499, 278, 228, 467, 495, 541),
+(9, 20, 10, 1, 2, 3, 4, 5, 278, 228, 467, 495, 541),
+(10, 29, 10, 278, 467, 228, 495, 541, 278, 228, 467, 495, 541),
+(11, 32, 27, 287, 649, 433, 502, 506, 287, 649, 433, 502, 506),
+(12, 31, 27, 80, 353, 141, 263, 286, 80, 353, 141, 263, 286),
+(13, 30, 27, 257, 520, 523, 12, 524, 257, 520, 523, 12, 524),
+(14, 33, 27, 503, 697, 717, 13, 257, 503, 697, 717, 13, 257),
+(15, 30, 20, 658, 37, 260, 126, 72, 658, 37, 260, 126, 72),
+(16, 31, 20, 275, 6, 241, 2, 526, 275, 6, 241, 2, 526),
+(17, 32, 20, 194, 729, 533, 718, 309, 194, 729, 533, 718, 309),
+(18, 33, 20, 180, 467, 228, 495, 578, 180, 467, 228, 495, 578),
+(19, 34, 20, 140, 667, 201, 480, 13, 140, 667, 201, 480, 13),
+(20, 30, 21, 6, 305, 575, 345, 602, 6, 305, 575, 345, 602),
+(21, 31, 21, 397, 435, 444, 100, 158, 397, 435, 444, 100, 158),
+(22, 32, 21, 233, 504, 543, 37, 693, 233, 504, 543, 37, 693),
+(23, 33, 21, 643, 425, 481, 337, 352, 643, 425, 481, 337, 352),
+(24, 34, 21, 70, 348, 640, 404, 679, 70, 348, 640, 404, 679),
+(25, 30, 22, 207, 105, 418, 260, 556, 207, 105, 418, 260, 556),
+(26, 31, 22, 495, 541, 309, 609, 623, 495, 541, 309, 609, 623),
+(27, 32, 22, 321, 218, 672, 588, 335, 321, 218, 672, 588, 335),
+(28, 33, 22, 497, 339, 224, 103, 107, 497, 339, 224, 103, 107),
+(29, 34, 22, 40, 53, 311, 607, 409, 40, 53, 311, 607, 409);
 
 -- --------------------------------------------------------
 
@@ -62,7 +87,8 @@ INSERT INTO `hands` (`hand_id`, `league_id`, `user_id`, `hero1_id`, `hero2_id`, 
 -- Structure de la table `heroes`
 --
 
-CREATE TABLE `heroes` (
+DROP TABLE IF EXISTS `heroes`;
+CREATE TABLE IF NOT EXISTS `heroes` (
   `hero_id` smallint(6) NOT NULL,
   `hero_name` varchar(64) NOT NULL,
   `average` tinyint(4) NOT NULL,
@@ -72,11 +98,12 @@ CREATE TABLE `heroes` (
   `durability` tinyint(4) NOT NULL,
   `power` tinyint(4) NOT NULL,
   `combat` tinyint(4) NOT NULL,
-  `image` tinytext NOT NULL
+  `image` tinytext NOT NULL,
+  PRIMARY KEY (`hero_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `heroes`
+-- Déchargement des données de la table `heroes`
 --
 
 INSERT INTO `heroes` (`hero_id`, `hero_name`, `average`, `intelligence`, `strength`, `speed`, `durability`, `power`, `combat`, `image`) VALUES
@@ -576,20 +603,27 @@ INSERT INTO `heroes` (`hero_id`, `hero_name`, `average`, `intelligence`, `streng
 -- Structure de la table `leagues`
 --
 
-CREATE TABLE `leagues` (
-  `league_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `leagues`;
+CREATE TABLE IF NOT EXISTS `leagues` (
+  `league_id` int(11) NOT NULL AUTO_INCREMENT,
   `league_name` varchar(50) NOT NULL,
-  `current_league_day` int(11) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+  `current_league_day` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`league_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4;
 
 --
--- Contenu de la table `leagues`
+-- Déchargement des données de la table `leagues`
 --
 
 INSERT INTO `leagues` (`league_id`, `league_name`, `current_league_day`) VALUES
-(11, 'My eeoeoeo', 1),
+(11, 'My eeoeoeo', 3),
 (20, 'My Super League', 0),
-(25, 'fornite', 0);
+(32, '6 players', 0),
+(31, '1st day', 0),
+(30, 'In progress', 0),
+(29, 'Test', 0),
+(33, '7 players', 0),
+(34, '7p_test', 0);
 
 -- --------------------------------------------------------
 
@@ -597,18 +631,25 @@ INSERT INTO `leagues` (`league_id`, `league_name`, `current_league_day`) VALUES
 -- Structure de la table `league_users`
 --
 
-CREATE TABLE `league_users` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `league_users`;
+CREATE TABLE IF NOT EXISTS `league_users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `league_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=57 DEFAULT CHARSET=utf8mb4;
 
 --
--- Contenu de la table `league_users`
+-- Déchargement des données de la table `league_users`
 --
 
 INSERT INTO `league_users` (`id`, `league_id`, `user_id`) VALUES
 (26, 11, 15),
+(35, 29, 10),
+(38, 32, 27),
+(37, 31, 27),
+(36, 30, 27),
+(39, 33, 27),
 (7, 11, 8),
 (8, 11, 9),
 (22, 11, 11),
@@ -617,7 +658,23 @@ INSERT INTO `league_users` (`id`, `league_id`, `user_id`) VALUES
 (24, 11, 12),
 (14, 20, 10),
 (25, 11, 14),
-(31, 25, 16);
+(40, 34, 27),
+(41, 30, 20),
+(42, 31, 20),
+(43, 32, 20),
+(44, 33, 20),
+(45, 34, 20),
+(46, 30, 21),
+(47, 31, 21),
+(48, 32, 21),
+(49, 33, 21),
+(50, 34, 21),
+(51, 30, 22),
+(52, 31, 22),
+(53, 32, 22),
+(54, 33, 22),
+(55, 34, 22),
+(56, 30, 23);
 
 -- --------------------------------------------------------
 
@@ -625,30 +682,32 @@ INSERT INTO `league_users` (`id`, `league_id`, `user_id`) VALUES
 -- Structure de la table `matches`
 --
 
-CREATE TABLE `matches` (
-  `match_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `matches`;
+CREATE TABLE IF NOT EXISTS `matches` (
+  `match_id` int(11) NOT NULL AUTO_INCREMENT,
   `league_id` int(11) NOT NULL,
   `league_day` int(11) NOT NULL,
   `user1_id` int(11) NOT NULL,
   `user2_id` int(11) NOT NULL,
   `winner_id` int(11) NOT NULL DEFAULT '0',
   `looser_id` int(11) NOT NULL DEFAULT '0',
-  `score` varchar(10) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+  `score` varchar(10) NOT NULL DEFAULT '',
+  PRIMARY KEY (`match_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=310 DEFAULT CHARSET=utf8mb4;
 
 --
--- Contenu de la table `matches`
+-- Déchargement des données de la table `matches`
 --
 
 INSERT INTO `matches` (`match_id`, `league_id`, `league_day`, `user1_id`, `user2_id`, `winner_id`, `looser_id`, `score`) VALUES
-(282, 11, 1, 15, 8, 0, 0, ''),
-(283, 11, 1, 9, 11, 0, 0, ''),
-(284, 11, 1, 10, 13, 0, 0, ''),
-(285, 11, 1, 12, 14, 0, 0, ''),
-(286, 11, 2, 15, 9, 0, 0, ''),
-(287, 11, 2, 8, 11, 0, 0, ''),
-(288, 11, 2, 10, 12, 0, 0, ''),
-(289, 11, 2, 13, 14, 0, 0, ''),
+(282, 11, 1, 15, 8, 8, 15, '0-5'),
+(283, 11, 1, 9, 11, 11, 9, '0-5'),
+(284, 11, 1, 10, 13, 13, 10, '0-5'),
+(285, 11, 1, 12, 14, 14, 12, '0-5'),
+(286, 11, 2, 15, 9, 9, 15, '0-5'),
+(287, 11, 2, 8, 11, 11, 8, '0-5'),
+(288, 11, 2, 10, 12, 12, 10, '0-5'),
+(289, 11, 2, 13, 14, 14, 13, '0-5'),
 (290, 11, 3, 15, 11, 0, 0, ''),
 (291, 11, 3, 8, 9, 0, 0, ''),
 (292, 11, 3, 10, 14, 0, 0, ''),
@@ -676,19 +735,21 @@ INSERT INTO `matches` (`match_id`, `league_id`, `league_day`, `user1_id`, `user2
 -- Structure de la table `users`
 --
 
-CREATE TABLE `users` (
-  `user_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_name` varchar(50) NOT NULL,
   `user_password` varchar(100) NOT NULL,
-  `user_mail` varchar(100) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+  `user_mail` varchar(100) NOT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4;
 
 --
--- Contenu de la table `users`
+-- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`user_id`, `user_name`, `user_password`, `user_mail`) VALUES
-(7, 'Yolo', '$2y$10$J6I46ryD7Po8vtICtQiim.Yb9TVhPZRurgJnq2NFyaKKw3C2tHuC2', 'yolo@yolo.fr'),
+(18, 'bruno', '$2y$10$a0llnEkD3BuJmbKLDclgMO.lkBFmXlQLmWTqhyTAA7PVO41wAAGn6', 'bruno@hetic.net'),
 (11, 'test3', '$2y$10$gujF6W6znSsza9RsxRZ..OrT3CKQ84ieIweDR/0UpSW7Wb9AYzTSO', 'a@a.fr'),
 (8, 'test', '$2y$10$Orai/C2VY/BQxqnZ.5ErRuO7R7c3uyZqUINwWpv8lx4bN5eSGlDny', 'test@gmail.com'),
 (9, 'test2', '$2y$10$x0BTjx88r2KHDvhgxqxaVOOGNA.qvMJdycf6B4RvbXcbj/vcZxBce', 'test2@gmail.com'),
@@ -696,77 +757,18 @@ INSERT INTO `users` (`user_id`, `user_name`, `user_password`, `user_mail`) VALUE
 (12, 'test4', '$2y$10$RjbaQybp05XR353bH7O5S.zcj9E0ruxJkvHUV7uA7NTXDubGtJWoS', 't@t.fr'),
 (13, 'test5', '$2y$10$KrG7vgJO41R8kheiht4pbeV0EQL/Mdq5dR4dc8i.3U7/nUxBNSKJ6', 'a@a.Fr'),
 (14, 'test6', '$2y$10$0gAK8uzv7m9VjAlWC9tLwOPWT5EF7BQ58obDpFV9EYAqJh.Nxs2.2', 't@t.fr'),
-(15, 'test7', '$2y$10$o.lmz/CdzZovxl1eJ1TdSOsP5kshpKSG.YpTon/Y.DfBDtUduCfEW', 'ada@d.fr');
+(15, 'test7', '$2y$10$o.lmz/CdzZovxl1eJ1TdSOsP5kshpKSG.YpTon/Y.DfBDtUduCfEW', 'ada@d.fr'),
+(19, 'etienne', '$2y$10$IqaDOLQWgOS3izGXdvhHCOXncST/Vc56zowtHBCjGwdAtIdk00d/y', 'etienne@hetic.net'),
+(20, 'pres_user1', '$2y$10$awFlujSElBOBHRPpWG1AbO8a9lZkBsjUSK.pNycVEkniyIma7lCpq', 'pres_user1@hetic.net'),
+(21, 'pres_user2', '$2y$10$2UKYelbJ7y3ASVdAiSTw8.IpXiBJujaI6yV7TSmSYsF3nUtNl7bQu', 'pres_user2@hetic.net'),
+(22, 'pres_user3', '$2y$10$4/aMFPYrZ6Si9IcErFerA.Exxq1hqyxSyETN/gnGU5yR7PyvihFdC', 'pres_user3@hetic.net'),
+(23, 'pres_user4', '$2y$10$4YljEk8c4cjadampLgNA1eWaKy1xXHrJij/CBKDmCsoydAuvJKTy2', 'pres_user4@hetic.net'),
+(24, 'pres_user5', '$2y$10$965DwkeLnO1ewealmyfikebE1zGsBU89lCMpKxc3BN3twWKjP2hv2', 'pres_user5@hetic.net'),
+(25, 'pres_user6', '$2y$10$e8EreN9E7EOTZXxxqMFTnegce4qtg9ors0Qh0YwHslll7bQhKCAae', 'pres_user6@hetic.net'),
+(26, 'pres_user7', '$2y$10$/d27YWE73tFHjNppSsMVEuJKms17YW9k9zmHqKqcuMRDqowXdmTkS', 'pres_user7@hetic.net'),
+(27, 'pres_master', '$2y$10$ugUAdyEvlSVogztWO7QIiuLNwwIUAOyDmP6aUbvx/p2COcmTSIslO', 'pres_master@hetic.net');
+COMMIT;
 
---
--- Index pour les tables exportées
---
-
---
--- Index pour la table `hands`
---
-ALTER TABLE `hands`
-  ADD PRIMARY KEY (`hand_id`);
-
---
--- Index pour la table `heroes`
---
-ALTER TABLE `heroes`
-  ADD PRIMARY KEY (`hero_id`);
-
---
--- Index pour la table `leagues`
---
-ALTER TABLE `leagues`
-  ADD PRIMARY KEY (`league_id`);
-
---
--- Index pour la table `league_users`
---
-ALTER TABLE `league_users`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `matches`
---
-ALTER TABLE `matches`
-  ADD PRIMARY KEY (`match_id`);
-
---
--- Index pour la table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`);
-
---
--- AUTO_INCREMENT pour les tables exportées
---
-
---
--- AUTO_INCREMENT pour la table `hands`
---
-ALTER TABLE `hands`
-  MODIFY `hand_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
---
--- AUTO_INCREMENT pour la table `leagues`
---
-ALTER TABLE `leagues`
-  MODIFY `league_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
---
--- AUTO_INCREMENT pour la table `league_users`
---
-ALTER TABLE `league_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
---
--- AUTO_INCREMENT pour la table `matches`
---
-ALTER TABLE `matches`
-  MODIFY `match_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=310;
---
--- AUTO_INCREMENT pour la table `users`
---
-ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

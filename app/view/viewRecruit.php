@@ -8,7 +8,7 @@
     <div class="col-lg-12">Create your team choosing 5 heroes that you'll pay with RP</div>
   </div>
   <div class="row">
-    <div class="col-lg-4 offset-lg-4 mt-3 mb-5 budgetRemaining">Budget remaining 5000 RP</div>
+    <div class="col-lg-4 offset-lg-4 mt-3 mb-5 budgetRemaining">Budget remaining 3500 RP</div>
   </div>
   <div class="row mt-4 justify-content-center">
     <form action="index.php?action=recruit&league_id=<?= $_GET['league_id'] ?>" method="POST" class="col-lg-6">

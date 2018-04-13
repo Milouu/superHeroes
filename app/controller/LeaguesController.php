@@ -108,7 +108,7 @@ class LeaguesController
       // Empty POST
       $_POST['code'] = '';
     
-      header('Location: index.php?action=dashboard&league_id=' . $joinLeagueData['league_id']);
+      header('Location: index.php?action=intermediary&league_id=' . $joinLeagueData['league_id']);
     }
     
     // Form not sent
