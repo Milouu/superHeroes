@@ -12,7 +12,16 @@ class Match extends Model
    */
   public function getNextMatch($user_id, $league_id, $current_league_day)
   {
-    return $this->executeRequest('SELECT * FROM matches WHERE league_id = ' . $league_id . ' AND league_day = ' . $current_league_day->current_league_day . ' AND (user1_id = ' . $user_id . ' OR user2_id = ' . $user_id .' )');
+    return $this->executeRequest(
+      'SELECT * FROM matches WHERE league_id = ' . $league_id . ' AND league_day = ' . $current_league_day->current_league_day . ' AND (user1_id = ' . $user_id . ' OR user2_id = ' . $user_id .' )'
+    );
+  }
+
+  public function getLastMatch($user_id, $league_id, $current_league_day)
+  {
+    return $this->executeRequest(
+      'SELECT * FROM matches WHERE league_id = ' . $league_id . ' AND league_day = ' . strval($current_league_day->current_league_day - 1) . ' AND (user1_id = ' . $user_id . ' OR user2_id = ' . $user_id .' )'
+    );
   }
 
   public function getMatchDetails($match_id)

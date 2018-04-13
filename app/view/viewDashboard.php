@@ -71,6 +71,37 @@
 <?php endforeach; ?>
 </div>
 
+<div class="row tableContainer">
+  <div class="banner titles col-lg-12">
+    <h4>League Results</h4>
+  </div>
+  <div class="table col-md-6">
+    <h4>Current table</h4>
+    <?php
+      $positionKeys = array_keys($league_table);
+      for($i = 0; $i < count($league_table); $i++):
+    ?>
+    <div class="position">
+      <div class="left">
+        <p class="rank">n°<?= $i ?></p>
+        <p class="user"><?= array_keys($league_table)[$i] ?></p>
+      </div>
+      <p class="points"><?= $league_table[$positionKeys[$i]] ?> points</p>
+    </div>
+    <?php endfor; ?>
+  </div>
+  <div class="table lastMatch col-md-6">
+    <h4>Your last match</h4>
+    <div class="lastMatchWrap">
+      <p><?= $last_match['victory'] ? 'Victory' : 'Defeat' ?></p>
+      <p class="matchScore <?= $last_match['victory'] ? 'victory' : 'defeat' ?>">
+        <?= $last_match['score'] ?>
+        </p>
+      <p>vs <?= $last_match['opponent'] ?></p>
+    </div>
+  </div>
+</div>
+
 <div class="row">
   <div class="col-lg-12 mt-5 mb-3 yourChampionship">Your Championship</div>
 </div>
