@@ -107,7 +107,9 @@
 <!-- Don't show next day button on last league -->
 <?php if(intval($current_league_day->current_league_day) < 8): ?>
 <div class="row">
-  <div class="col-lg-12 mt-5 mb-3 yourChampionship">Your Championship</div>
+  <div class="col-lg-12 mt-5 mb-3 yourChampionship banner">
+    <h4>Your Championship</h4>
+  </div>
 </div>
 <div class="row">
   <div class="col-lg-3 offset-lg-1 nextMatch mt-5">Next Match :</div>
@@ -117,6 +119,7 @@
 </div>
 
 <div class="ml-5">
+
 <h2 class="ml-5 mb-5">Set your team order</h2>
 
 <div class="row justify-content-center">
