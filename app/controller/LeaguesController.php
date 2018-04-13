@@ -69,7 +69,7 @@ class LeaguesController
         // Empty POST
         $_POST['name'] = '';
 
-        header('Location: index.php?action=dashboard&league_id=' . $userData['league_id']);
+        // header('Location: index.php?action=dashboard&league_id=' . $userData['league_id']);
       }
     }
     
