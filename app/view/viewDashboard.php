@@ -17,7 +17,7 @@
   <div class="title col-lg-12">DASHBOARD</div>
 </div>
 <div class="row">
-  <?php if(!$current_league_day->current_league_day) { ?>
+  <?php if(!$current_league_day->current_league_day): ?>
   <div class="col-lg-12 mt-4 mb-4">
     <button class="redButton">
       <a href="index.php?action=dashboard&option=tryLaunchLeague&league_id=<?= $_GET['league_id'] ?>" style="display:<?= $current_league_day->current_league_day ? 'none' : 'inline-block' ?>">
@@ -27,7 +27,7 @@
     <p style="color:red;"><?= isset($errorMessages['tryLaunchLeague']) ? $errorMessages['tryLaunchLeague'] : '' ?></p>
     <p style="color:green;"><?= isset($successMessages['leagueCreation']) ? $successMessages['leagueCreation'] : '' ?></p>
   </div>
-  <?php } ?>  
+  <?php endif; ?>  
   <div class="heroesTitle titles col-lg-12">
     <h4>Your superheroes team</h4>
   </div>
@@ -106,7 +106,7 @@
 </div>
 
 
-<?php if($current_league_day->current_league_day) { ?>
+<?php if($current_league_day->current_league_day): ?>
 
 <div class="row justify-content-center">
   <div class="col-lg-12 versus mb-3">VS</div>
@@ -142,7 +142,7 @@
   <a href="index.php?action=dashboard&league_id=11&option=nextDay" class="nextDay registerButton pl-2 pr-2" title="Next day">Next league day</a>
 </div>
 </div>
-<?php } ?>
+<?php endif; ?>
 
 
 
