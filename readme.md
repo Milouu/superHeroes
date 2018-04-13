@@ -20,29 +20,36 @@ We decided to make a small game where users can create or join league with their
 
 #### Sign in
 - Connect to user account
-- Create a new league
 
 #### Leagues
+- Create a new league
 - Join a created league
 - See and interact with all the leagues that have been joined 
 
 #### Recruit
-- Recrute heroes to use for a league
+- Recrute heroes using your reputation to use for a league
+- Controls that you have enough reputation to get the 5 heroes you selected
 
 #### Dashboard
+- Launch the league if it contains 8 players that have all done their recruitement
 - See the heroes that have been selected for a league
 - Set order in which to send heroes in battle for the next match
 - See the heroes of the opponent for the next match
+- See the result of the last match
+- See the current leaderboard
 
 #### SetNextLeagueDay
 - Calculate the result of all the matches for the current league day and increment league day (should be handled by a cron task once a day)
 
 
 
-##Test User
+##Test Users
 
-**login** yolo
-**password** yolo
+**login** bruno
+**password** bruno
+
+**login** etienne
+**password** etienne
 
 
 ## Licence
