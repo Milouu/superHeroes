@@ -175,9 +175,11 @@
     </ul>
   </div>
 <?php endforeach; ?>
-<div class="col-lg-4 pt-5">
-  <a href="index.php?action=dashboard&league_id=11&option=nextDay" class="nextDay registerButton pl-2 pr-2" title="Next day">Next league day</a>
 </div>
+<div class="row">
+  <div class="col-lg-12 pt-5 mb-4">
+    <a href="index.php?action=dashboard&league_id=11&option=nextDay" class="nextDay registerButton pl-2 pr-2" title="Next day">Next league day</a>
+  </div>
 </div>
 <?php endif; ?>
 
