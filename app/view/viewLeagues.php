@@ -15,7 +15,7 @@
       <?php for($i = 0; $i < count($leagues); $i++): ?>
       <div class="col-lg-4 userLeague">
         <h4 class="leagueName"><?= $league_names[$i][0]->league_name ?></h4>
-        <a href="index.php?action=dashboard&league_id=<?= $leagues[$i]->league_id ?>" class="play redButton">
+        <a href="index.php?action=intermediary&league_id=<?= $leagues[$i]->league_id ?>" class="play redButton">
           Play
         </a>
       </div>
@@ -72,3 +72,5 @@
     </form>
   </div>
 </div>
+
+<img class="deadpool" src="assets/images/deadpool.png" alt="deadpool"/>
