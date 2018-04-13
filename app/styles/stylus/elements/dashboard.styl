@@ -112,6 +112,8 @@ h4
     color whitish
     font-size 20px
     font-weight bold
+    h4
+        color #0e0e0e
 
 .myTeamImages
     height 90px
@@ -136,3 +138,39 @@ h4
 // Table part
 .tableContainer
     margin-top 40px
+
+.tableContainer
+    h4
+        color #0e0e0e
+    .table
+        margin-top: 40px
+        display flex
+        flex-direction column
+        justify-content flex-start
+
+        .position
+            display flex
+            flex-direction row
+            justify-content space-between
+            border-bottom 1px solid rgba(0, 0, 0, 0.1)
+
+            .left
+                display flex
+                flex-direction row
+                justify-content flex-start
+                p
+                    width 50px
+
+    .lastMatch
+        .lastMatchWrap
+            padding: 80px 0
+            justify-content space-around
+            flex: 1
+
+            .matchScore
+                font-size 64px
+                &.victory
+                    color green
+                &.defeat
+                    color red
+

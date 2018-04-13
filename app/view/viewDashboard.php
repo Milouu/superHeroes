@@ -90,9 +90,15 @@
     </div>
     <?php endfor; ?>
   </div>
-  <div class="table col-md-6">
-    <h4>Your last game</h4>
-    <p class="resultStatus"><?= $last_match['victory'] ? 'Victory' : 'Defeat' ?></p>
+  <div class="table lastMatch col-md-6">
+    <h4>Your last match</h4>
+    <div class="lastMatchWrap">
+      <p><?= $last_match['victory'] ? 'Victory' : 'Defeat' ?></p>
+      <p class="matchScore <?= $last_match['victory'] ? 'victory' : 'defeat' ?>">
+        <?= $last_match['score'] ?>
+        </p>
+      <p>vs <?= $last_match['opponent'] ?></p>
+    </div>
   </div>
 </div>
 
