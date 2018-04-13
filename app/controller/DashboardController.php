@@ -45,9 +45,13 @@ class DashboardController
     $next_match = $this->match->getNextMatch($_SESSION['user_id'], $league_id, $current_league_day)[0];
 
     // Don't get last match data on first league day
-    if (intval($current_league_day->current_league_day) > 0)
+    if (intval($current_league_day->current_league_day) > 1)
     {
       $last_match_data = $this->match->getLastMatch($_SESSION['user_id'], $league_id, $current_league_day)[0];
+
+      echo '<pre>';
+      var_dump($current_league_day->current_league_day);
+      echo '</pre>';
 
       if ($_SESSION['user_id'] == $last_match_data->user1_id) {
         $last_id = $last_match_data->user2_id;

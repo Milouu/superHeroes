@@ -71,7 +71,7 @@
 </div>
 
 <!-- Don't show section on first league day -->
-<?php if(intval($current_league_day->current_league_day) > 0): ?>
+<?php if(intval($current_league_day->current_league_day) > 1): ?>
 <div class="row tableContainer">
   <div class="banner titles col-lg-12">
     <h4>League Results</h4>
