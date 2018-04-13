@@ -42,16 +42,31 @@ class DashboardController
     $user_hand = $this->hand->getHand($_SESSION['user_id'], $league_id);
     $user_heroes = $this->hand->getHeroesFromHand($user_hand);
 
-    $next_match = $this->match->getNextMatch($_SESSION['user_id'], $league_id, $current_league_day)[0];
+    // Don't get next match data on last league day
+    if (intval($current_league_day->current_league_day) < 8)
+    {
+      $next_match = $this->match->getNextMatch($_SESSION['user_id'], $league_id, $current_league_day)[0];
+      if($next_match->user1_id == $_SESSION['user_id'])
+      {
+        $opponent_hand = $this->hand->getHand($next_match->user2_id, $league_id);
+      }
+      else
+      {
+        $opponent_hand = $this->hand->getHand($next_match->user1_id, $league_id);
+      }
+      $opponent_heroes = $this->hand->getHeroesFromHand($opponent_hand);
+    }
+    else
+    {
+      // Prevent undefined variable notices
+      $next_match = new StdClass();
+      $opponent_heroes = new StdClass();
+    }
 
     // Don't get last match data on first league day
     if (intval($current_league_day->current_league_day) > 1)
     {
       $last_match_data = $this->match->getLastMatch($_SESSION['user_id'], $league_id, $current_league_day)[0];
-
-      echo '<pre>';
-      var_dump($current_league_day->current_league_day);
-      echo '</pre>';
 
       if ($_SESSION['user_id'] == $last_match_data->user1_id) {
         $last_id = $last_match_data->user2_id;
@@ -75,17 +90,6 @@ class DashboardController
       // Prevent undefined error
       $last_match = [];
     }
-
-    if($next_match->user1_id == $_SESSION['user_id'])
-    {
-      $opponent_hand = $this->hand->getHand($next_match->user2_id,$league_id);
-    }
-    else
-    {
-      $opponent_hand = $this->hand->getHand($next_match->user1_id,$league_id);
-    }
-
-    $opponent_heroes = $this->hand->getHeroesFromHand($opponent_hand);
 
     $league_table = $this->getLeagueTable($league_id);
 

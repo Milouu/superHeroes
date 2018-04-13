@@ -104,6 +104,8 @@
 </div>
 <?php endif; ?>
 
+<!-- Don't show next day button on last league -->
+<?php if(intval($current_league_day->current_league_day) < 8): ?>
 <div class="row">
   <div class="col-lg-12 mt-5 mb-3 yourChampionship">Your Championship</div>
 </div>
@@ -148,7 +150,7 @@
 </div>
 
 <div class="row offset-lg-2 mt-5">
-<?php foreach($opponent_heroes as $opponent_hero): ?>
+  <?php foreach($opponent_heroes as $opponent_hero): ?>
   <ul class="col-lg-2">
     <li><div class="heroNames"><?=$opponent_hero->hero_name ?></div></li>
     <li><img class="opponentTeamImages" src="<?= str_replace('http://', 'https://',$opponent_hero->image) ?>" alt=""></li>
@@ -171,11 +173,13 @@
       <li class="opponentStats"><?=$opponent_hero->combat ?></li>
     </ul>
   </div>
-<?php endforeach; ?>
+  <?php endforeach; ?>
+</div>
+<?php endif; ?>
+
+<!-- Don't show next day button on last league -->
+<?php if(intval($current_league_day->current_league_day) < 8): ?>
 <div class="col-lg-4 pt-5">
   <a href="index.php?action=dashboard&league_id=11&option=nextDay" class="nextDay registerButton pl-2 pr-2" title="Next day">Next league day</a>
 </div>
-</div>
-
-
-
+<?php endif; ?>
