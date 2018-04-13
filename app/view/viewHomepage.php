@@ -16,7 +16,7 @@
     </div>
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 gameResume"> Compose a team of superheroes able to defeat your opponent and bring you victory!</div>        
     <div class="row homepageStepOne align-items-center m-5">
-        <img class="col-lg-6 col-md-6 offset-2 stepsImg" src="./assets/images/StepOne.svg">
+        <img class="col-lg-6 col-md-6 offset-1 stepsImg" src="./assets/images/StepOne.svg">
         <div class="col-lg-4 col-md-4 col-sm-4 -2 col-xs-5">
             <h1 class="homepageSteps">STEP ONE</h1>
             <p class="homepageStepsDescription"> Create a league with your friends </p>
@@ -31,7 +31,7 @@
         
     </div>
     <div class="row homepageStepThree align-items-center m-5">
-        <img class="col-lg-6 col-md-6 offset-2 stepsImg" src="./assets/images/StepThree.svg">
+        <img class="col-lg-6 col-md-6 offset-1 stepsImg" src="./assets/images/StepThree.svg">
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-5">
             <h1 class="homepageSteps">STEP THREE</h1>
             <p class="homepageStepsDescription"> Order your cards and defeat your opponent ! </p>

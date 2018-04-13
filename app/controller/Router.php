@@ -7,6 +7,7 @@ require_once 'RecruitController.php';
 require_once 'LeaguesController.php';
 require_once 'DashboardController.php';
 require_once 'RulesController.php';
+require_once 'IntermediaryController.php';
 
 class Router 
 {
@@ -17,6 +18,7 @@ class Router
   private $leaguesCtrl;
   private $dashboardCtrl;
   private $rulesCtrl;
+  private $intermediaryCtrl;
 
   public function __construct()
   {
@@ -26,7 +28,8 @@ class Router
     $this->recruitCtrl = new RecruitController();
     $this->leaguesCtrl = new LeaguesController();
     $this->dashboardCtrl = new DashboardController();
-    $this->rulesCtrl = new rulesController();
+    $this->rulesCtrl = new RulesController();
+    $this->intermediaryCtrl = new IntermediaryController();
   }
   
   /**
@@ -129,6 +132,11 @@ class Router
           }
           else
             throw new Exception('No league ID');
+        }
+
+        else if($_GET['action'] == 'intermediary')
+        {
+          $this->intermediaryCtrl->redirect();
         }
   
         else if($_GET['action'] == 'recruit') 
