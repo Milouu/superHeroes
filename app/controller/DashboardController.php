@@ -117,7 +117,7 @@ class DashboardController
   {
     $league_users = $this->league->getLeagueUsers($league_id);
 
-    if(count($league_users) == 8 && verifyUsersRecruitement($league_id, $league_users))
+    if(count($league_users) == 8 && $this->verifyUsersRecruitement($league_id, $league_users))
     {
       $this->match->createLeagueMatches($league_id, $league_users);
       $this->league->initCurrentLeagueDay($league_id);
@@ -139,7 +139,7 @@ class DashboardController
   {
     foreach($league_users as $league_user)
     {
-      $user_hand = $this->hand->getHand($league_user->id, $league_id);
+      $user_hand = $this->hand->getHand($league_user->user_id, $league_id)[0];
 
       if(empty($user_hand))
       {
