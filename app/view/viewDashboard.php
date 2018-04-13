@@ -33,7 +33,6 @@
   </div>
 </div>
 
-
 <div class="row mt-5">
 <?php foreach ($user_heroes as $user_hero): ?>
   <div class="cards col-4 offset-lg-1 mt-4">
@@ -81,28 +80,32 @@
   <div class="col-lg-9 offset-lg-1 mt-3 orderTeam">Order your superheroes in team. They will face the opponent hero who is placed at the same place</div>
 </div>
 
-
+<div class="ml-5">
 <h2 class="ml-5 mb-5">Set your team order</h2>
 
-<div class="row ml-5">
+<div class="row justify-content-center">
+<form action="index.php?action=dashboard&option=trySetOrder&league_id=<?= $_SESSION['league_id'] ?>" method="POST" class="recruitList mb-5">
   <?php 
   $i=0;
   foreach($user_heroes as $user_hero): ?>
-  <div class="col-lg-6 mb-5">
-  <form action="index.php?action=dashboard&option=trySetOrder&league_id=<?= $_SESSION['league_id'] ?>" method="POST" class="recruitList">
-        <img class="myTeamImages" src="<?= str_replace('http://', 'https://',$user_hero->image) ?>" alt="#">
-        <p class="name heroNames"><?=$user_hero->hero_name ?></p>
-      <div class="d-inline-flex flex-row">
-          <p class="p-2"><input type="radio" name="order1" value="<?= ++$i ?>">N°1</p>
-          <p class="p-2"><input type="radio" name="order2" value="<?= $i ?>">N°2</p>
-          <p class="p-2"><input type="radio" name="order3" value="<?= $i ?>">N°3</p>
-          <p class="p-2"><input type="radio" name="order4" value="<?= $i ?>">N°4</p>
-          <p class="p-2"><input type="radio" name="order5" value="<?= $i ?>">N°5</p>
-      <input type="submit" value="Set order" class="formButton ml-5">
-    </div>
-  </form>
+  <div class="mb-5 row">
+    <ul>
+      <li><img class="myTeamImages" src="<?= str_replace('http://', 'https://',$user_hero->image) ?>" alt="#"></li>
+      <li><p class="name heroNames"><?=$user_hero->hero_name ?></p></li>   
+    </ul>
+      <ul class="d-inline-flex flex-row ml-5">
+          <li class="ml-4"><p><input type="radio" name="order1" value="<?= ++$i ?>">N°1</p></li>
+          <li class="ml-4"><p><input type="radio" name="order2" value="<?= $i ?>">N°2</p></li>
+          <li class="ml-4"><p><input type="radio" name="order3" value="<?= $i ?>">N°3</p></li>
+          <li class="ml-4"><p><input type="radio" name="order4" value="<?= $i ?>">N°4</p></li>
+          <li class="ml-4"><p><input type="radio" name="order5" value="<?= $i ?>">N°5</p></li>
+      </ul>
   </div>
   <?php endforeach; ?>
+  <input type="submit" value="Set order" class="formButton mr-5 mb-5">
+  </form>
+</div>
+
 </div>
 
 <div class="row justify-content-center">
