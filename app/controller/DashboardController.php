@@ -101,6 +101,7 @@ class DashboardController
       'current_league_day' => $current_league_day, 
       'user_names' => $user_names,
       'user_heroes' => $user_heroes,
+      'user_current_hand' => $user_hand[0],
       'opponent_heroes' => $opponent_heroes,
       'league_table' => $league_table,
       'last_match' => $last_match
@@ -260,16 +261,20 @@ class DashboardController
     if(!empty($_POST))
     { 
       $order = [
-        'order1' => $_POST['order1'],
-        'order2' => $_POST['order2'],
-        'order3' => $_POST['order3'],
-        'order4' => $_POST['order4'],
-        'order5' => $_POST['order5'],
+        'order1' => isset($_POST['order1']) ? $_POST['order1'] : '',
+        'order2' => isset($_POST['order2']) ? $_POST['order2'] : '',
+        'order3' => isset($_POST['order3']) ? $_POST['order3'] : '',
+        'order4' => isset($_POST['order4']) ? $_POST['order4'] : '',
+        'order5' => isset($_POST['order5']) ? $_POST['order5'] : '',
       ];
 
-      if(!($this->testOrder($order)))
+      if(($this->testOrder($order)) == -1)
       {
         $this->errorMessages['order'] = 'Each hero can only play once';
+      }
+      else if(($this->testOrder($order)) == -2)
+      {
+        $this->errorMessages['order'] = 'Missing hero in order';
       }
 
       if(empty($this->errorMessages['order']))
@@ -277,6 +282,8 @@ class DashboardController
         $user_hand = $this->hand->getHand($_SESSION['user_id'], $_GET['league_id'])[0];
         $order_ids = $this->hand->getIdsFromOrder($user_hand, $order);
         $this->hand->setOrder($user_hand, $order_ids);
+
+        $this->successMessages['order'] = 'Order set successfully !';
 
         header('Location: index.php?action=dashboard&league_id=' .$_GET['league_id']);
       }
@@ -295,17 +302,21 @@ class DashboardController
    */
   public function testOrder($order)
   {
-    for($i=1; $i <= count($order); $i++)
+    for($i=1; $i <= count($order)-1; $i++)
     {
       for($j=$i+1; $j <= count($order); $j++)
       {
         if($order['order'.$i] == $order['order'.$j])
         {
-          return false;
+          return -1;
+        }
+        else if(($order['order'.$i]) == '')
+        {
+          return -2;
         }
       }
     }
-    return true;
+    return 1;
   }
 
   /**

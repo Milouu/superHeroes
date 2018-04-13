@@ -120,28 +120,35 @@
 
 <div class="ml-5">
 
-<h2 class="ml-5 mb-5">Set your team order</h2>
+<div class="row">
+  <div class="col-lg-12 mt-4 mb-4">
+    <h2 class="ml-5 mb-5">Set your team order</h2>
+  </div>
+</div>
 
 <div class="row justify-content-center">
 <form action="index.php?action=dashboard&option=trySetOrder&league_id=<?= $_SESSION['league_id'] ?>" method="POST" class="recruitList mb-5">
   <?php 
   $i=0;
-  foreach($user_heroes as $user_hero): ?>
+  foreach($user_heroes as $user_hero): 
+  ?>
   <div class="mb-5 row">
     <ul>
       <li><img class="myTeamImages" src="<?= str_replace('http://', 'https://',$user_hero->image) ?>" alt="#"></li>
       <li><p class="name heroNames"><?=$user_hero->hero_name ?></p></li>   
     </ul>
       <ul class="d-inline-flex flex-row ml-5">
-          <li class="ml-4"><p><input type="radio" name="order1" value="<?= ++$i ?>">N°1</p></li>
-          <li class="ml-4"><p><input type="radio" name="order2" value="<?= $i ?>">N°2</p></li>
-          <li class="ml-4"><p><input type="radio" name="order3" value="<?= $i ?>">N°3</p></li>
-          <li class="ml-4"><p><input type="radio" name="order4" value="<?= $i ?>">N°4</p></li>
-          <li class="ml-4"><p><input type="radio" name="order5" value="<?= $i ?>">N°5</p></li>
+          <li class="ml-4"><p><input type="radio" name="order1" value="<?= ++$i ?>" <?= ($user_hero->hero_id == $user_current_hand->hero1_order) ? 'checked' : '' ?>>N°1</p></li>
+          <li class="ml-4"><p><input type="radio" name="order2" value="<?= $i ?>" <?= ($user_hero->hero_id == $user_current_hand->hero2_order) ? 'checked' : '' ?>>N°2</p></li>
+          <li class="ml-4"><p><input type="radio" name="order3" value="<?= $i ?>" <?= ($user_hero->hero_id == $user_current_hand->hero3_order) ? 'checked' : '' ?>>N°3</p></li>
+          <li class="ml-4"><p><input type="radio" name="order4" value="<?= $i ?>" <?= ($user_hero->hero_id == $user_current_hand->hero4_order) ? 'checked' : '' ?>>N°4</p></li>
+          <li class="ml-4"><p><input type="radio" name="order5" value="<?= $i ?>" <?= ($user_hero->hero_id == $user_current_hand->hero5_order) ? 'checked' : '' ?>>N°5</p></li>
       </ul>
   </div>
   <?php endforeach; ?>
   <input type="submit" value="Set order" class="formButton mr-5 mb-5">
+  <p style="color:red;"><?= isset($errorMessages['order']) ? $errorMessages['order'] : '' ?></p>
+  <p style="color:green;"><?= isset($successMessages['order']) ? $successMessages['order'] : '' ?></p>
   </form>
 </div>
 
