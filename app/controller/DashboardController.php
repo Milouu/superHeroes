@@ -43,6 +43,24 @@ class DashboardController
     $user_heroes = $this->hand->getHeroesFromHand($user_hand);
 
     $next_match = $this->match->getNextMatch($_SESSION['user_id'], $league_id, $current_league_day)[0];
+    $last_match_data = $this->match->getLastMatch($_SESSION['user_id'], $league_id, $current_league_day)[0];
+
+    if ($_SESSION['user_id'] == $last_match_data->user1_id) {
+      $last_id = $last_match_data->user2_id;
+    } else {
+      $last_id = $last_match_data->user2_id;
+    }
+
+    $lastIdObject = new stdClass();
+    $lastIdObject->user_id = $last_id;
+
+    $last_opponent = $this->user->getUserNames([$lastIdObject])[0];
+
+    $last_match = array(
+      'victory' => $_SESSION['user_id'] == $last_match_data->winner_id,
+      'opponent' => $last_opponent[0]->user_name,
+      'score' => $last_match_data->score
+    );
 
     if($next_match->user1_id == $_SESSION['user_id'])
     {
@@ -67,7 +85,8 @@ class DashboardController
       'user_names' => $user_names,
       'user_heroes' => $user_heroes,
       'opponent_heroes' => $opponent_heroes,
-      'league_table' => $league_table
+      'league_table' => $league_table,
+      'last_match' => $last_match
     ));
   }
 

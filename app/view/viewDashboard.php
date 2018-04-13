@@ -90,6 +90,10 @@
     </div>
     <?php endfor; ?>
   </div>
+  <div class="table col-md-6">
+    <h4>Your last game</h4>
+    <p class="resultStatus"><?= $last_match['victory'] ? 'Victory' : 'Defeat' ?></p>
+  </div>
 </div>
 
 <div class="row">
