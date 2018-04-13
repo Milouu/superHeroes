@@ -43,7 +43,7 @@ class DashboardController
     $user_heroes = $this->hand->getHeroesFromHand($user_hand);
 
     // Don't get next match data on last league day
-    if (intval($current_league_day->current_league_day) < 8)
+    if (intval($current_league_day->current_league_day) < 8 && intval($current_league_day->current_league_day) > 0)
     {
       $next_match = $this->match->getNextMatch($_SESSION['user_id'], $league_id, $current_league_day)[0];
       if($next_match->user1_id == $_SESSION['user_id'])

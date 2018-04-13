@@ -106,92 +106,92 @@
 
 <!-- Don't show next day button on last league -->
 <?php if(intval($current_league_day->current_league_day) < 8): ?>
-<div class="row">
-  <div class="col-lg-12 mt-5 mb-3 yourChampionship banner">
-    <h4>Your Championship</h4>
+  <div class="row">
+    <div class="col-lg-12 mt-5 mb-3 yourChampionship banner">
+      <h4>Your Championship</h4>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-lg-3 offset-lg-1 nextMatch mt-5">Next Match :</div>
-</div>
-<div class="row mb-5">
-  <div class="col-lg-9 offset-lg-1 mt-3 orderTeam">Order your superheroes in team. They will face the opponent hero who is placed at the same place</div>
-</div>
-
-<div class="ml-5">
-
-<div class="row">
-  <div class="col-lg-12 mt-4 mb-4">
-    <h2 class="ml-5 mb-5">Set your team order</h2>
+  <div class="row">
+    <div class="col-lg-3 offset-lg-1 nextMatch mt-5">Next Match :</div>
   </div>
-</div>
+  <div class="row mb-5">
+    <div class="col-lg-9 offset-lg-1 mt-3 orderTeam">Order your superheroes in team. They will face the opponent hero who is placed at the same place</div>
+  </div>
 
-<div class="row justify-content-center">
-<form action="index.php?action=dashboard&option=trySetOrder&league_id=<?= $_SESSION['league_id'] ?>" method="POST" class="recruitList mb-5">
-  <?php 
-  $i=0;
-  foreach($user_heroes as $user_hero): 
-  ?>
-  <div class="mb-5 row">
-    <ul>
-      <li><img class="myTeamImages" src="<?= str_replace('http://', 'https://',$user_hero->image) ?>" alt="#"></li>
-      <li><p class="name heroNames"><?=$user_hero->hero_name ?></p></li>   
-    </ul>
-      <ul class="d-inline-flex flex-row ml-5">
-          <li class="ml-4"><p><input type="radio" name="order1" value="<?= ++$i ?>" <?= ($user_hero->hero_id == $user_current_hand->hero1_order) ? 'checked' : '' ?>>N°1</p></li>
-          <li class="ml-4"><p><input type="radio" name="order2" value="<?= $i ?>" <?= ($user_hero->hero_id == $user_current_hand->hero2_order) ? 'checked' : '' ?>>N°2</p></li>
-          <li class="ml-4"><p><input type="radio" name="order3" value="<?= $i ?>" <?= ($user_hero->hero_id == $user_current_hand->hero3_order) ? 'checked' : '' ?>>N°3</p></li>
-          <li class="ml-4"><p><input type="radio" name="order4" value="<?= $i ?>" <?= ($user_hero->hero_id == $user_current_hand->hero4_order) ? 'checked' : '' ?>>N°4</p></li>
-          <li class="ml-4"><p><input type="radio" name="order5" value="<?= $i ?>" <?= ($user_hero->hero_id == $user_current_hand->hero5_order) ? 'checked' : '' ?>>N°5</p></li>
+  <div class="ml-5">
+
+  <div class="row">
+    <div class="col-lg-12 mt-4 mb-4">
+      <h2 class="ml-5 mb-5">Set your team order</h2>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+  <form action="index.php?action=dashboard&option=trySetOrder&league_id=<?= $_SESSION['league_id'] ?>" method="POST" class="recruitList mb-5">
+    <?php 
+    $i=0;
+    foreach($user_heroes as $user_hero): 
+    ?>
+    <div class="mb-5 row">
+      <ul>
+        <li><img class="myTeamImages" src="<?= str_replace('http://', 'https://',$user_hero->image) ?>" alt="#"></li>
+        <li><p class="name heroNames"><?=$user_hero->hero_name ?></p></li>   
       </ul>
+        <ul class="d-inline-flex flex-row ml-5">
+            <li class="ml-4"><p><input type="radio" name="order1" value="<?= ++$i ?>" <?= ($user_hero->hero_id == $user_current_hand->hero1_order) ? 'checked' : '' ?>>N°1</p></li>
+            <li class="ml-4"><p><input type="radio" name="order2" value="<?= $i ?>" <?= ($user_hero->hero_id == $user_current_hand->hero2_order) ? 'checked' : '' ?>>N°2</p></li>
+            <li class="ml-4"><p><input type="radio" name="order3" value="<?= $i ?>" <?= ($user_hero->hero_id == $user_current_hand->hero3_order) ? 'checked' : '' ?>>N°3</p></li>
+            <li class="ml-4"><p><input type="radio" name="order4" value="<?= $i ?>" <?= ($user_hero->hero_id == $user_current_hand->hero4_order) ? 'checked' : '' ?>>N°4</p></li>
+            <li class="ml-4"><p><input type="radio" name="order5" value="<?= $i ?>" <?= ($user_hero->hero_id == $user_current_hand->hero5_order) ? 'checked' : '' ?>>N°5</p></li>
+        </ul>
+    </div>
+    <?php endforeach; ?>
+    <input type="submit" value="Set order" class="formButton mr-5 mb-5">
+    <p style="color:red;"><?= isset($errorMessages['order']) ? $errorMessages['order'] : '' ?></p>
+    <p style="color:green;"><?= isset($successMessages['order']) ? $successMessages['order'] : '' ?></p>
+    </form>
   </div>
-  <?php endforeach; ?>
-  <input type="submit" value="Set order" class="formButton mr-5 mb-5">
-  <p style="color:red;"><?= isset($errorMessages['order']) ? $errorMessages['order'] : '' ?></p>
-  <p style="color:green;"><?= isset($successMessages['order']) ? $successMessages['order'] : '' ?></p>
-  </form>
-</div>
 
-</div>
+  </div>
 
 
-<?php if($current_league_day->current_league_day): ?>
+  <?php if($current_league_day->current_league_day): ?>
 
-<div class="row justify-content-center">
-  <div class="col-lg-12 versus mb-3">VS</div>
-  <img src="./assets/images/swords.jpg" alt="">
-</div>
+  <div class="row justify-content-center">
+    <div class="col-lg-12 versus mb-3">VS</div>
+    <img src="./assets/images/swords.jpg" alt="">
+  </div>
 
-<div class="row offset-lg-2 mt-5">
-  <?php foreach($opponent_heroes as $opponent_hero): ?>
-  <ul class="col-lg-2">
-    <li><div class="heroNames"><?=$opponent_hero->hero_name ?></div></li>
-    <li><img class="opponentTeamImages" src="<?= str_replace('http://', 'https://',$opponent_hero->image) ?>" alt=""></li>
-  </ul>
-  <div class="row col-lg-4 mt-4 mb-3">
-    <ul>
-      <li class="opponentStats">Intelligence  &nbsp;</li>
-      <li class="opponentStats">Strength   &nbsp;</li>
-      <li class="opponentStats">Speed  &nbsp;</li>
-      <li class="opponentStats">Durability  &nbsp;</li>
-      <li class="opponentStats">Power  &nbsp;</li>
-      <li class="opponentStats">Combat  &nbsp;</li>
+  <div class="row offset-lg-2 mt-5">
+    <?php foreach($opponent_heroes as $opponent_hero): ?>
+    <ul class="col-lg-2">
+      <li><div class="heroNames"><?=$opponent_hero->hero_name ?></div></li>
+      <li><img class="opponentTeamImages" src="<?= str_replace('http://', 'https://',$opponent_hero->image) ?>" alt=""></li>
     </ul>
-    <ul>
-      <li class="opponentStats opponentStatsValues"><?=$opponent_hero->intelligence ?></li>
-      <li class="opponentStats opponentStatsValues"><?=$opponent_hero->strength ?></li>
-      <li class="opponentStats opponentStatsValues"><?=$opponent_hero->speed ?></li>
-      <li class="opponentStats opponentStatsValues"><?=$opponent_hero->durability ?></li>
-      <li class="opponentStats opponentStatsValues"><?=$opponent_hero->power ?></li>
-      <li class="opponentStats opponentStatsValues"><?=$opponent_hero->combat ?></li>
-    </ul>
+    <div class="row col-lg-4 mt-4 mb-3">
+      <ul>
+        <li class="opponentStats">Intelligence  &nbsp;</li>
+        <li class="opponentStats">Strength   &nbsp;</li>
+        <li class="opponentStats">Speed  &nbsp;</li>
+        <li class="opponentStats">Durability  &nbsp;</li>
+        <li class="opponentStats">Power  &nbsp;</li>
+        <li class="opponentStats">Combat  &nbsp;</li>
+      </ul>
+      <ul>
+        <li class="opponentStats opponentStatsValues"><?=$opponent_hero->intelligence ?></li>
+        <li class="opponentStats opponentStatsValues"><?=$opponent_hero->strength ?></li>
+        <li class="opponentStats opponentStatsValues"><?=$opponent_hero->speed ?></li>
+        <li class="opponentStats opponentStatsValues"><?=$opponent_hero->durability ?></li>
+        <li class="opponentStats opponentStatsValues"><?=$opponent_hero->power ?></li>
+        <li class="opponentStats opponentStatsValues"><?=$opponent_hero->combat ?></li>
+      </ul>
+    </div>
+    <?php endforeach; ?>
   </div>
-  <?php endforeach; ?>
-</div>
-<?php endif; ?>
-<div class="row">
-  <div class="col-lg-12 pt-5 mb-4">
-    <a href="index.php?action=dashboard&league_id=11&option=nextDay" class="nextDay registerButton pl-2 pr-2" title="Next day">Next league day</a>
+  <div class="row">
+    <div class="col-lg-12 pt-5 mb-4">
+      <a href="index.php?action=dashboard&league_id=11&option=nextDay" class="nextDay registerButton pl-2 pr-2" title="Next day">Next league day</a>
+    </div>
   </div>
-</div>
+  <?php endif; ?>
 <?php endif; ?>
