@@ -70,12 +70,14 @@
 <?php endforeach; ?>
 </div>
 
+<!-- Don't show section on first league day -->
+<?php if(intval($current_league_day->current_league_day) > 0): ?>
 <div class="row tableContainer">
   <div class="banner titles col-lg-12">
     <h4>League Results</h4>
   </div>
   <div class="table col-md-6">
-    <h4>Current table</h4>
+    <h4 class="subTitle">Current table</h4>
     <?php
       $positionKeys = array_keys($league_table);
       for($i = 0; $i < count($league_table); $i++):
@@ -90,7 +92,7 @@
     <?php endfor; ?>
   </div>
   <div class="table lastMatch col-md-6">
-    <h4>Your last match</h4>
+    <h4 class="subTitle">Your last match</h4>
     <div class="lastMatchWrap">
       <p><?= $last_match['victory'] ? 'Victory' : 'Defeat' ?></p>
       <p class="matchScore <?= $last_match['victory'] ? 'victory' : 'defeat' ?>">
@@ -100,6 +102,7 @@
     </div>
   </div>
 </div>
+<?php endif; ?>
 
 <div class="row">
   <div class="col-lg-12 mt-5 mb-3 yourChampionship">Your Championship</div>
