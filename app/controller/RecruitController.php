@@ -1,6 +1,7 @@
 <?php
 
 require_once 'model/Hero.php';
+require_once 'model/Hand.php';
 require_once 'view/View.php';
 
 class RecruitController
@@ -11,6 +12,7 @@ class RecruitController
   public function __construct()
   {
     $this->hero = new Hero();
+    $this->hand = new Hand();
   }
 
   /**
