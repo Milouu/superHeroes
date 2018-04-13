@@ -167,16 +167,16 @@
       <li class="opponentStats">Strength   &nbsp;</li>
       <li class="opponentStats">Speed  &nbsp;</li>
       <li class="opponentStats">Durability  &nbsp;</li>
-      <li class="opponentStats">Power  &nbsp;></li>
-      <li class="opponentStats">Combat  &nbsp;<?=$opponent_hero->combat ?></li>
+      <li class="opponentStats">Power  &nbsp;</li>
+      <li class="opponentStats">Combat  &nbsp;</li>
     </ul>
     <ul>
-      <li class="opponentStats"><?=$opponent_hero->intelligence ?></li>
-      <li class="opponentStats"><?=$opponent_hero->strength ?></li>
-      <li class="opponentStats"><?=$opponent_hero->speed ?></li>
-      <li class="opponentStats"><?=$opponent_hero->durability ?></li>
-      <li class="opponentStats"><?=$opponent_hero->power ?></li>
-      <li class="opponentStats"><?=$opponent_hero->combat ?></li>
+      <li class="opponentStats opponentStatsValues"><?=$opponent_hero->intelligence ?></li>
+      <li class="opponentStats opponentStatsValues"><?=$opponent_hero->strength ?></li>
+      <li class="opponentStats opponentStatsValues"><?=$opponent_hero->speed ?></li>
+      <li class="opponentStats opponentStatsValues"><?=$opponent_hero->durability ?></li>
+      <li class="opponentStats opponentStatsValues"><?=$opponent_hero->power ?></li>
+      <li class="opponentStats opponentStatsValues"><?=$opponent_hero->combat ?></li>
     </ul>
   </div>
   <?php endforeach; ?>
