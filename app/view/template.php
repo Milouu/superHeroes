@@ -31,8 +31,8 @@
           <div class="nav navbar-right">
             <a class="mr-4" href="index.php?action=rules">Rules</a>
             <a class="mr-4 deconnection <?= isset($_SESSION['user']) ? "deconnection--active": false ?>" href="index.php?action=leagues">Leagues</a>
-            <a class="mr-4 login <?= isset($_SESSION['user']) ? "connection--active": false ?>" href="index.php?action=signin"><img src="assets/images/user.svg"></img> Login</a>
-            <a class="mr-4 deconnection <?= isset($_SESSION['user']) ? "deconnection--active": false ?>" href="index.php?action=deconnection"><img src="assets/images/user.svg"></img> Disconnection</a>
+            <a class="mr-4 login <?= isset($_SESSION['user']) ? "connection--active": false ?>" href="index.php?action=signin">Login <img src="assets/images/user.svg"></img></a>
+            <a class="mr-4 deconnection <?= isset($_SESSION['user']) ? "deconnection--active": false ?>" href="index.php?action=deconnection">Disconnection <img src="assets/images/user.svg"></img> </a>
           </div>
         </div>
       </nav>
