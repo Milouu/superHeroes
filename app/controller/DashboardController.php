@@ -79,7 +79,7 @@ class DashboardController
   {
     $league_users = $this->league->getLeagueUsers($league_id);
 
-    if(count($league_users) == 8)
+    if(count($league_users) == 8 && verifyUsersRecruitement($league_id, $league_users))
     {
       $this->match->createLeagueMatches($league_id, $league_users);
       $this->league->initCurrentLeagueDay($league_id);
@@ -91,6 +91,24 @@ class DashboardController
     {
       $this->errorMessages['tryLaunchLeague'] = 'Need 8 players to launch league';
     }
+  }
+
+  /**
+   * Verifies if all league users have made recruitement
+   * @param league_id, a league id
+   */
+  public function verifyUsersRecruitement($league_id, $league_users)
+  {
+    foreach($league_users as $league_user)
+    {
+      $user_hand = $this->hand->getHand($league_user->id, $league_id);
+
+      if(empty($user_hand))
+      {
+        return false;
+      }
+    }
+    return true;
   }
 
   /**
