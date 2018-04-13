@@ -70,7 +70,6 @@ class DashboardController
       $last_match = [];
     }
 
-    if($next_match->user1_id == $_SESSION['user_id'])
     if($current_league_day->current_league_day)
     {
       $next_match = $this->match->getNextMatch($_SESSION['user_id'], $league_id, $current_league_day)[0];
