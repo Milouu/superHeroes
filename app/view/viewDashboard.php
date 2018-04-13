@@ -12,22 +12,22 @@
     </div>
 </div>
 
-<a href="index.php?action=recruit&league_id=<?= $_GET['league_id'] ?>" style="display:<?= $current_league_day->current_league_day ? 'none' : 'inline-block' ?>">
-  Recrutement
-</a>
-
-<a href="index.php?action=dashboard&option=tryLaunchLeague&league_id=<?= $_GET['league_id'] ?>" style="display:<?= $current_league_day->current_league_day ? 'none' : 'inline-block' ?>">
-  Launch League
-</a>
-
-<p style="color:red;"><?= isset($errorMessages['tryLaunchLeague']) ? $errorMessages['tryLaunchLeague'] : '' ?></p>
-<p style="color:green;"><?= isset($successMessages['leagueCreation']) ? $successMessages['leagueCreation'] : '' ?></p>
-
 <div class="container bigContainer mt-5">
 <div class="row">
   <div class="title col-lg-12">DASHBOARD</div>
 </div>
 <div class="row">
+  <?php if(!$current_league_day->current_league_day): ?>
+  <div class="col-lg-12 mt-4 mb-4">
+    <button class="redButton">
+      <a href="index.php?action=dashboard&option=tryLaunchLeague&league_id=<?= $_GET['league_id'] ?>" style="display:<?= $current_league_day->current_league_day ? 'none' : 'inline-block' ?>">
+        Launch League
+      </a>
+    </button>
+    <p style="color:red;"><?= isset($errorMessages['tryLaunchLeague']) ? $errorMessages['tryLaunchLeague'] : '' ?></p>
+    <p style="color:green;"><?= isset($successMessages['leagueCreation']) ? $successMessages['leagueCreation'] : '' ?></p>
+  </div>
+  <?php endif; ?>  
   <div class="heroesTitle titles col-lg-12">
     <h4>Your superheroes team</h4>
   </div>
@@ -144,6 +144,9 @@
 
 </div>
 
+
+<?php if($current_league_day->current_league_day): ?>
+
 <div class="row justify-content-center">
   <div class="col-lg-12 versus mb-3">VS</div>
   <img src="./assets/images/swords.jpg" alt="">
@@ -176,10 +179,9 @@
   <?php endforeach; ?>
 </div>
 <?php endif; ?>
-
-<!-- Don't show next day button on last league -->
-<?php if(intval($current_league_day->current_league_day) < 8): ?>
-<div class="col-lg-4 pt-5">
-  <a href="index.php?action=dashboard&league_id=11&option=nextDay" class="nextDay registerButton pl-2 pr-2" title="Next day">Next league day</a>
+<div class="row">
+  <div class="col-lg-12 pt-5 mb-4">
+    <a href="index.php?action=dashboard&league_id=11&option=nextDay" class="nextDay registerButton pl-2 pr-2" title="Next day">Next league day</a>
+  </div>
 </div>
 <?php endif; ?>

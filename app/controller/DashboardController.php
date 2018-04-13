@@ -91,21 +91,50 @@ class DashboardController
       $last_match = [];
     }
 
-    $league_table = $this->getLeagueTable($league_id);
-
-    $view = new View('Dashboard');
-    $view->generate(array(
-      'errorMessages' => $this->errorMessages,
-      'successMessages' => $this->successMessages,
-      'league_name' => $league_name, 
-      'league_users' => $league_users,
-      'current_league_day' => $current_league_day, 
-      'user_names' => $user_names,
-      'user_heroes' => $user_heroes,
-      'opponent_heroes' => $opponent_heroes,
-      'league_table' => $league_table,
-      'last_match' => $last_match
-    ));
+    if($current_league_day->current_league_day)
+    {
+      $next_match = $this->match->getNextMatch($_SESSION['user_id'], $league_id, $current_league_day)[0];
+  
+      if($next_match->user1_id == $_SESSION['user_id'])
+      {
+        $opponent_hand = $this->hand->getHand($next_match->user2_id,$league_id);
+      }
+      else
+      {
+        $opponent_hand = $this->hand->getHand($next_match->user1_id,$league_id);
+      }
+      $opponent_heroes = $this->hand->getHeroesFromHand($opponent_hand);
+  
+      $league_table = $this->getLeagueTable($league_id);
+      
+      $view = new View('Dashboard');
+      $view->generate(array(
+        'errorMessages' => $this->errorMessages,
+        'successMessages' => $this->successMessages,
+        'league_name' => $league_name, 
+        'league_users' => $league_users,
+        'current_league_day' => $current_league_day, 
+        'user_names' => $user_names,
+        'user_heroes' => $user_heroes,
+        'opponent_heroes' => $opponent_heroes,
+        'league_table' => $league_table,
+        'last_match' => $last_match
+      ));
+    }
+    else
+    {
+      $view = new View('Dashboard');
+      $view->generate(array(
+        'errorMessages' => $this->errorMessages,
+        'successMessages' => $this->successMessages,
+        'league_name' => $league_name, 
+        'league_users' => $league_users,
+        'current_league_day' => $current_league_day, 
+        'user_names' => $user_names,
+        'user_heroes' => $user_heroes,
+        'last_match' => $last_match
+      ));
+    }
   }
 
   /**
@@ -116,7 +145,7 @@ class DashboardController
   {
     $league_users = $this->league->getLeagueUsers($league_id);
 
-    if(count($league_users) == 8)
+    if(count($league_users) == 8 && verifyUsersRecruitement($league_id, $league_users))
     {
       $this->match->createLeagueMatches($league_id, $league_users);
       $this->league->initCurrentLeagueDay($league_id);
@@ -128,6 +157,24 @@ class DashboardController
     {
       $this->errorMessages['tryLaunchLeague'] = 'Need 8 players to launch league';
     }
+  }
+
+  /**
+   * Verifies if all league users have made recruitement
+   * @param league_id, a league id
+   */
+  public function verifyUsersRecruitement($league_id, $league_users)
+  {
+    foreach($league_users as $league_user)
+    {
+      $user_hand = $this->hand->getHand($league_user->id, $league_id);
+
+      if(empty($user_hand))
+      {
+        return false;
+      }
+    }
+    return true;
   }
 
   /**
