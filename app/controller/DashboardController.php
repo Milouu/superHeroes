@@ -90,51 +90,22 @@ class DashboardController
       // Prevent undefined error
       $last_match = [];
     }
+    $league_table = $this->getLeagueTable($league_id);
 
-    if($current_league_day->current_league_day)
-    {
-      $next_match = $this->match->getNextMatch($_SESSION['user_id'], $league_id, $current_league_day)[0];
-  
-      if($next_match->user1_id == $_SESSION['user_id'])
-      {
-        $opponent_hand = $this->hand->getHand($next_match->user2_id,$league_id);
-      }
-      else
-      {
-        $opponent_hand = $this->hand->getHand($next_match->user1_id,$league_id);
-      }
-      $opponent_heroes = $this->hand->getHeroesFromHand($opponent_hand);
-  
-      $league_table = $this->getLeagueTable($league_id);
-      
-      $view = new View('Dashboard');
-      $view->generate(array(
-        'errorMessages' => $this->errorMessages,
-        'successMessages' => $this->successMessages,
-        'league_name' => $league_name, 
-        'league_users' => $league_users,
-        'current_league_day' => $current_league_day, 
-        'user_names' => $user_names,
-        'user_heroes' => $user_heroes,
-        'opponent_heroes' => $opponent_heroes,
-        'league_table' => $league_table,
-        'last_match' => $last_match
-      ));
-    }
-    else
-    {
-      $view = new View('Dashboard');
-      $view->generate(array(
-        'errorMessages' => $this->errorMessages,
-        'successMessages' => $this->successMessages,
-        'league_name' => $league_name, 
-        'league_users' => $league_users,
-        'current_league_day' => $current_league_day, 
-        'user_names' => $user_names,
-        'user_heroes' => $user_heroes,
-        'last_match' => $last_match
-      ));
-    }
+    $view = new View('Dashboard');
+    $view->generate(array(
+      'errorMessages' => $this->errorMessages,
+      'successMessages' => $this->successMessages,
+      'league_name' => $league_name, 
+      'league_users' => $league_users,
+      'current_league_day' => $current_league_day, 
+      'user_names' => $user_names,
+      'user_heroes' => $user_heroes,
+      'opponent_heroes' => $opponent_heroes,
+      'league_table' => $league_table,
+      'last_match' => $last_match
+    ));
+
   }
 
   /**
