@@ -72,3 +72,5 @@
     </form>
   </div>
 </div>
+
+<img class="deadpool" src="assets/images/deadpool.png" alt="deadpool"/>
